@@ -1,7 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
 import Login from "./components/Login"
+import FormikForm from './components/FormikForm';
+
 
 
 function App() {
@@ -9,7 +11,7 @@ function App() {
     <div className="App">
         
 
-      <Login />
+      <FormikForm />
       
     </div>
   );
