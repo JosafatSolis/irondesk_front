@@ -7,11 +7,14 @@ import * as serviceWorker from './serviceWorker';
 import UIkit from "uikit"
 import "uikit/dist/css/uikit.min.css"
 import Icons from "uikit/dist/js/uikit-icons"
+import { BrowserRouter } from 'react-router-dom'
 
 UIkit.use(Icons)
 
 ReactDOM.render(
-    <App />, 
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>, 
     document.getElementById('root')
 );
 
