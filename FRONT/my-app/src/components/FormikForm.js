@@ -1,7 +1,7 @@
 import React from 'react';
 import {Formik} from "formik" // Es una libreria de React que facilita el manejo de formularios
 import * as Yup from "yup"    //libreria para validar el formulario 
-import Error from "./Error"
+import ErrorDialog from "./ErrorDialog"
 
 
 // VALIDACIONES --> las vamos a definir usando YUP como si fuera un SCHEMA de base de datos
@@ -17,7 +17,7 @@ const validationSchema = Yup.object().shape(  {
     .email("You must enter a valid email")
     .required("You must enter your email"),
 
-    textArea: Yup.string()
+    problem: Yup.string()
     .min(70, "Please describe with more detail...")
     .max(1000, "Please use less than 1,000 characters")
     .required("Please enter your problem"),
@@ -46,7 +46,7 @@ export default function FormikForm (){
     >
     <Formik
         //aqui estan los valores del formulario (Schemas)
-        initialValues= { {name: "", email: "", textArea: "", code:"", phone:""  }}
+        initialValues= { {name: "", email: "", problem: "", code:"", phone:""  }}
         validationSchema={validationSchema}
         onSubmit= { (values, {setSubmitting, resetForm} )=>{
            setSubmitting(true)
@@ -76,7 +76,7 @@ export default function FormikForm (){
                     className={touched.name && errors.name ? "uk-form-danger uk-text-secondary" : "uk-form-success uk-text-secondary"} 
                    />
 
-                    <Error
+                    <ErrorDialog
                     touched={touched.name}
                     message={errors.name}
                     /> 
@@ -96,14 +96,14 @@ export default function FormikForm (){
                     className={touched.email && errors.email ? "uk-form-danger uk-text-secondary" : "uk-form-success uk-text-secondary"}
                     />
 
-                    <Error
+                    <ErrorDialog
                     touched={touched.email}
                     message={errors.email}
                     /> 
                 </div>
 
                 <div>
-                    <label htmlFor="code">Code:          </label>
+                    <label htmlFor="code"> Code:           </label>
                     <input 
                     type="text"
                     name="code"
@@ -116,7 +116,7 @@ export default function FormikForm (){
                     className={touched.code && errors.code ? "uk-form-danger uk-text-secondary" : "uk-form-success uk-text-secondary"}
                     />
 
-                    <Error
+                    <ErrorDialog
                     touched={touched.code}
                     message={errors.code}
                     /> 
@@ -136,7 +136,7 @@ export default function FormikForm (){
                     className={touched.phone && errors.phone ? "uk-form-danger uk-text-secondary" : "uk-form-success uk-text-secondary"}
                     />
 
-                    <Error
+                    <ErrorDialog
                     touched={touched.phone}
                     message={errors.phone}
                     /> 
@@ -146,21 +146,21 @@ export default function FormikForm (){
                 <div>
                 <textarea 
                     rows="6" 
-                    placeholder="Describa con el mayor detalle posible su problema..."
-                    className={touched.textArea && errors.textArea ? "uk-form-danger uk-input uk-text-secondary" : "uk-form-success uk-input uk-text-secondary"}
+                    placeholder="Describe with detail the problem..."
+                    className={touched.problem && errors.problemm ? "uk-form-danger uk-input uk-text-secondary" : "uk-form-success uk-input uk-text-secondary"}
                     type="text"
-                    name="textArea"
-                    id="textArea"
+                    name="problem"
+                    id="problem"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.textArea}
+                    value={values.problem}
                     style= {{width:"70%"}}
                     >
                 </textarea>
 
-                    <Error
-                    touched={touched.textArea}
-                    message={errors.textArea}
+                    <ErrorDialog
+                    touched={touched.problem}
+                    message={errors.problem}
                     /> 
                 </div>
 
