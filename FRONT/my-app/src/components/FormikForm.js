@@ -9,6 +9,7 @@ import ErrorDialog from "./ErrorDialog"
 
 const validationSchema = Yup.object().shape(  {
     name: Yup.string()
+                        
     .min(1, "Write your name")
     .max(30, "Your name is too long")
     .required("You must have a name"),
