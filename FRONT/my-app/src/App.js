@@ -10,11 +10,20 @@ import TicketsContainer from "./components/TicketsContainer";
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        {/* <FormikForm /> */}
-        <NavBar />
-        {/* <TenantsContainer /> */}
-        <TicketsContainer />
+      <div 
+      className="App uk-margin-large"
+      style={{backgroundColor:"blue"}}
+      >
+
+      <NavBar></NavBar>
+
+     
+     
+           
+      
+      <h1>IronDesk</h1>
+
+
       </div>
     );
   }

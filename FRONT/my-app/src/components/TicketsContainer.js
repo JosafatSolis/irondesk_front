@@ -3,16 +3,17 @@ import TicketCard from "./TicketCard";
 
 export default class TicketsContainer extends Component {
   render() {
+   
+
     return (
-      <section className="uk-section">
-        {/* <div className="uk-container">
-                    <div className="uk-grid uk-child-width-1-3">
-                        <TicketCard code="BT" name="Bimbo Toluca" />
-                        <TicketCard code="TR" name="Tia Rosa" />
-                       
-                    </div>
-                
-                </div> */}
+       <section className="uk-section">
+    {/* //     <div className="uk-container">
+    //       <div className="uk-grid uk-child-width-1-3">
+    //         <span className="uk-card uk-card-default uk-card-default">Algo</span>
+    //         <span>Algo</span>
+    //         <span>Algo</span>
+    //       </div>
+    //     </div> */}
 
         <div uk-filter="target: .js-filter">
           <ul className="uk-subnav uk-subnav-pill">
@@ -26,49 +27,66 @@ export default class TicketsContainer extends Component {
               <a href="#">Cerrados</a>
             </li>
           </ul>
+          <div className="uk-container">
+            <div className="js-filter uk-grid uk-text-center uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m"
+                 uk-scrollspy="cls: uk-animation-fade; target: .uk-card; delay: 100; repeat: false" >
+              
+              <div>
+                <div 
+                  status="Abierto" 
+                  className="uk-card uk-card-default uk-margin-bottom" >
 
-          <ul
-            className="js-filter uk-child-width-1-2 uk-child-width-1-3@m uk-text-center"
-            uk-grid
-          >
-            <li status="Abierto">
-            <TicketCard code="BT" name="Bimbo Toluca" />
-            </li>
-            <li status="Abierto">
-            <TicketCard code="BT" name="Bimbo Toluca" />
-            </li>
-            <li status="Abierto">
-            <TicketCard code="BT" name="Bimbo Toluca" />
-            </li>
-            <li status="Abierto">
-            <TicketCard code="BT" name="Bimbo Toluca" />
-            </li>
-            <li status="Cerrado">
-            <TicketCard code="BT" name="Bimbo Toluca" />
-            </li>
-            <li status="Cerrado">
-            <TicketCard code="BT" name="Bimbo Toluca" />
-            </li>
-            <li status="Abierto">
-            <TicketCard code="BT" name="Bimbo Toluca" />
-            </li>
-            <li status="Cerrado">
-            <TicketCard code="BT" name="Bimbo Toluca" />
-            </li>
-            <li status="Abierto">
-              <div className="uk-card uk-card-primary uk-card-body">Item</div>
-            </li>
-            <li status="Abierto">
-              <div className="uk-card uk-card-default uk-card-body">Item</div>
-            </li>
-            <li status="Abierto">
-              <div className="uk-card uk-card-primary uk-card-body">Item</div>
-            </li>
-            <li status="Cerrado">
-              <div className="uk-card uk-card-secondary uk-card-body">Item</div>
-            </li>
-          </ul>
+                {/*Solución temporal DATE, la ponga el usuario al registrar FORM */}
+                <TicketCard 
+                  code="BT" 
+                  name="Bimbo Toluca" 
+                  state="Open" 
+                  tenantCode="TR" 
+                  assignated="Rául"
+                  user="Pedro Suárez" 
+                  reportDate={"05/05/2020"} 
+                  description="Hubo un problema al iniciar el equipo porque no encendió correctamente a la hora que se ocupaba."
+                  
+                   
+                 />
+              </div></div>
+              <div status="Abierto" className="uk-card uk-card-default uk-margin-bottom">
+                {/*Solución temporal DATE, que lo cree el propio usuario al meter el formulario */}
+                <TicketCard 
+                code="KO" 
+                name="Coca-cola" 
+                state="Closed" 
+                tenantCode="LI" 
+                assignated="Rodrigo"
+                user="Eduardo Palomo" 
+                reportDate="12/12/2012" 
+                description="Hubo un problema al actualizar el equipo."
+                
+                 
+                />
+
+              </div>
+              <div status="Cerrado" className="uk-card uk-card-default uk-margin-bottom">
+                <TicketCard code="BT" name="Bimbo Toluca"  state="ClosedRequested" />
+              </div>
+              <div status="ClosingRequested" className="uk-card uk-card-default uk-margin-bottom">
+                <TicketCard code="BT" name="Bimbo Toluca" state="Open" />
+              </div>
+              <div status="Abierto" className="uk-card uk-card-default uk-margin-bottom">
+                <TicketCard code="BT" name="Bimbo Toluca" />
+              </div>
+              <div status="Cerrado" className="uk-card uk-card-default uk-margin-bottom">
+                <TicketCard code="BT" name="Bimbo Toluca" />
+              </div>
+              <div status="Abierto" className="uk-card uk-card-default uk-margin-bottom">
+                <TicketCard code="BT" name="Bimbo Toluca" />
+              </div>
+           
+            </div>
+          </div>
         </div>
+
+
       </section>
     );
   }
