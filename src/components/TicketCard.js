@@ -13,16 +13,16 @@ export default class TicketCard extends Component {
           <div>
             <div
               className={
-                this.props.state === "Open"
+                this.props.status === "Open"
                   ? "uk-label-danger"
-                  : this.props.state === "ClosingRequested"
+                  : this.props.status === "ClosingRequested"
                   ? "uk-label-warning"
                   : "uk-label-success"
               }
             >
-              {this.props.state === "Open"
+              {this.props.status === "Open"
                 ? "Abierto"
-                : this.props.state === "ClosingRequested"
+                : this.props.status === "ClosingRequested"
                 ? "Validar"
                 : "Cerrado"}
             </div>
@@ -53,7 +53,7 @@ export default class TicketCard extends Component {
               <span uk-icon="users"></span>
               <span className="uk-margin">Asignado a</span>
             </div>
-            <div className="uk-margin-small-left">{this.props.assignated}</div>
+            <div className="uk-margin-small-left">{this.props.tecnicianName}</div>
             <hr />
           </div>
           {/* Descripción colapsable */}
