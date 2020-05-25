@@ -16,7 +16,7 @@ class App extends Component {
       >
 
       <NavBar></NavBar>
-
+      {/*CREAR UN ESTADO PARA QUE AL HACER LOGIN APAREZCA LOGOUT Y ALREVES */}
      
      
            

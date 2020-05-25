@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import NavBar from "./Navbar";
+
 
 export default class TicketCard extends Component {
   render() {
@@ -7,9 +7,8 @@ export default class TicketCard extends Component {
     
        
 <div>
-  <NavBar></NavBar>
 
-      <div className="uk-card-body">
+      <div className="uk-card-body ">
         <div className="uk-grid uk-flex-around">
           <div>
 
@@ -24,12 +23,13 @@ export default class TicketCard extends Component {
             </div>
 
         </div>
-          <div>
-            <ul className="uk-iconnav">
+
+      <div>
+          <ul className="uk-iconnav">
               <li>  <button href="#" uk-icon="icon: file-edit">  </button>      </li>
               <li>  <button href="#" uk-icon="icon: trash">      </button>      </li>
-            </ul>
-          </div>
+          </ul>
+      </div>
 
           <div>
             <div className="uk-label">
@@ -63,7 +63,10 @@ export default class TicketCard extends Component {
                style={{ textAlign: "initial" }}>
             <ul uk-accordion="multiple: true">
               <li className="uk-closed">
-                <button className="uk-accordion-title uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom"> Descripción</button>
+                <button 
+                className="uk-accordion-title uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom"> 
+                Descripción
+                </button>
                   <div className="uk-accordion-content">
                     <article className="uk-comment uk-comment-primary uk-margin">
                     <header
@@ -91,7 +94,8 @@ export default class TicketCard extends Component {
           <div className="container-fluid" style={{ textAlign: "initial" }}>
             <ul uk-accordion="multiple: true">
               <li className="uk-closed">
-                <a className="uk-accordion-title">Actividades</a>
+
+                <button className="uk-accordion-title uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom">Actividades</button>
                 <div className="uk-accordion-content">
                   <div className="uk-overflow-auto uk-height-small uk-width-max uk-width-auto">
 
@@ -127,7 +131,7 @@ export default class TicketCard extends Component {
           </div>
 
           <div className="uk-grid uk-flex-around">
-            <div> 
+            <div className="uk-margin-small"> 
                 <button className="uk-button uk-button-default">Validar</button>
             </div>
 

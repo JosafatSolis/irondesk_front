@@ -20,9 +20,7 @@ ReactDOM.render(
         <Route exact path="/"      component={App} />
         <Route exact path="/login" component={Login} />
        
-        <Route path="/tenants/:id"         component={TicketCard} />
-        <Route exact path="/tickets" component={TicketsContainer} />
-        
+        <Route exact path="/tickets" component={TicketsContainer} />   
         <Route exact path="/newticket" component={FormikForm} />
 
     </BrowserRouter>, 
