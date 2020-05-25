@@ -1,10 +1,14 @@
 import React, { Component } from "react";
-import luxon, {DateTime} from 'luxon';
+import Timer from "./Timer";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime);
 
 export default class TicketCard extends Component {
   render() {
     return (
       <div className="uk-card-body">
+        {/* Encabezado con badges e íconos */}
         <div className="uk-grid uk-flex-around">
           <div>
             <div
@@ -34,16 +38,14 @@ export default class TicketCard extends Component {
             </ul>
           </div>
           <div>
-            <div class="uk-label">{this.props.tenantCode}</div>
+            <div className="uk-label">{this.props.tenantCode}</div>
           </div>
         </div>
-
-        <div className="uk-heading-small">
-          <span uk-icon="clock"></span> 10:32:05
-        </div>
+        {/* Timer actualizado en tiempo real */}
+        <Timer reportDate={this.props.reportDate} />
+        {/* Labels Asignado a .... X */}
         <div
-          className="uk-flex uk-flex-center uk-flex-column
-        uk-child-width-1-1"
+          className="uk-flex uk-flex-center uk-flex-column uk-child-width-1-1"
           style={{ alignItems: "start", justifyContent: "flex-end" }}
         >
           <div style={{ display: "flex", textAlign: "initial" }}>
@@ -54,43 +56,42 @@ export default class TicketCard extends Component {
             <div className="uk-margin-small-left">{this.props.assignated}</div>
             <hr />
           </div>
-
+          {/* Descripción colapsable */}
           <div className="container-fluid" style={{ textAlign: "initial" }}>
             <ul uk-accordion="multiple: true">
               <li className="uk-closed">
                 <a className="uk-accordion-title">Descripción</a>
                 <div className="uk-accordion-content">
-                  <article class="uk-comment uk-comment-primary uk-margin">
-                    <header
-                      class="uk-comment-header uk-grid-medium uk-flex-middle"
-                      uk-grid
-                    >
-                      <div class="uk-width-expand">
-                        <h4 class="uk-comment-title uk-margin-remove">
+                  <article className="uk-comment uk-comment-primary uk-margin">
+                    <header className="uk-comment-header uk-grid-medium uk-flex-middle">
+                      <div className="uk-width-expand">
+                        <h4 className="uk-comment-title uk-margin-remove">
                           <span uk-icon="user"></span>{" "}
                           <span>{this.props.user}</span>
                         </h4>
-                        {/* 25/05/2020 6:03 p.m. */}
-                        <span>25/05/2020 6:03 p.m.</span>
+                        <span>
+                          {dayjs(this.props.reportDate).format(
+                            "D/MM/YYYY h:mm a"
+                          )}
+                        </span>
                       </div>
                     </header>
-                    <div class="uk-comment-body uk-text-justify">
-                      <p>
-                        {this.props.description}
-                      </p>
+                    <div className="uk-comment-body uk-text-justify">
+                      <p>{this.props.description}</p>
                     </div>
                   </article>
                 </div>
               </li>
             </ul>
           </div>
+          {/* Actividades colapsables */}
           <div className="container-fluid" style={{ textAlign: "initial" }}>
             <ul uk-accordion="multiple: true">
               <li className="uk-closed">
                 <a className="uk-accordion-title">Actividades</a>
                 <div className="uk-accordion-content">
                   <div className="uk-overflow-auto uk-height-small uk-width-max uk-width-auto">
-                    <table class="uk-table uk-table-striped" style={{}}>
+                    <table className="uk-table uk-table-striped" style={{}}>
                       <thead>
                         <tr>
                           <th>Fecha</th>
@@ -98,14 +99,13 @@ export default class TicketCard extends Component {
                         </tr>
                       </thead>
                       <tbody>
-                        {/* {this.props.activities.map(activity => (
+                        {this.props.activities.map((activity) => (
                           <tr>
-                          <td>15/05 18:14</td>
-                          <td>
-                            {activity.activity}
-                          </td>
-                        </tr>
-                        ))} */}
+                            {/* 15/05 18:14 */}
+                            <td>{dayjs(activity.date).format("D/MM H:mm")}</td>
+                            <td>{activity.activity}</td>
+                          </tr>
+                        ))}
                       </tbody>
                     </table>
                   </div>
@@ -121,6 +121,7 @@ export default class TicketCard extends Component {
               </li>
             </ul>
           </div>
+          {/* Botones Cerrar / Validar */}
           <div className="uk-grid uk-flex-around">
             <div>
               <a className="uk-button uk-button-default">Validar</a>
@@ -131,65 +132,6 @@ export default class TicketCard extends Component {
           </div>
         </div>
       </div>
-    );
-
-    //     <table
-    //     class="uk-table uk-table-hover uk-table-divider"
-
-    //     >
-
-    //     <tbody>
-
-    //         <tr>
-    //             <td>HORA DE APERTURA   </td>
-    //             <td>10:22             </td>
-    //         </tr>
-
-    //         <tr>
-    //             <td>HORA DE CIERRE   </td>
-    //             <td>    PENDIENTE       </td>
-    //         </tr>
-
-    //         <tr>
-    //             <td>TENANT          </td>
-    //             <td>BT              </td>
-    //         </tr>
-
-    //         <tr>
-    //             <td>REPORTA         </td>
-    //             <td>Juan Perez      </td>
-    //         </tr>
-
-    //         <tr>
-    //             <td>ASIGNADO A       </td>
-    //             <td> El deivid     </td>
-    //         </tr>
-
-    //         <tr>
-    //             <td>DESCRIPCIÓN        </td>
-    //             <td>
-    //                 Dejo de funcionar el equipo BLABLABALABLABALABLABALBALABALAKSJDKLSAJDASHDIUFGIAUFBCAICBAIKCBAKJCBAICJBAIKCBAIBLDNCLJDCHNLJDKCHNDJLSKC
-    //             </td>
-    //         </tr>
-
-    //         <tr>
-    //             <td>ACTIVIDADES        </td>
-    //             <td
-
-    //             className="uk-column-1-1 container-fluid"
-    //             >
-    //                 <div>ACTIVIDAD 1 </div>
-    //                 <div>ACTIVIDAD 2 </div>
-    //                 <div>ACTIVIDAD 3 </div>
-    //                 <div>ACTIVIDAD 4 </div>
-
-    //             </td>
-    //         </tr>
-
-    //     </tbody>
-    // </table>
-
-    //             </div>
-    //         )
+    )
   }
 }
