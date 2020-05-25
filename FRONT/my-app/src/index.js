@@ -10,7 +10,6 @@ import Icons from "uikit/dist/js/uikit-icons"
 import { BrowserRouter, Route } from 'react-router-dom'
 import Login from './components/Login';
 import TicketsContainer from './components/TicketsContainer';
-import TicketCard from './components/TicketCard';
 import FormikForm from './components/FormikForm';
 
 UIkit.use(Icons)
