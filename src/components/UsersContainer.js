@@ -17,30 +17,30 @@ export default class UsersContainer extends Component {
                </li>
             ))}
           </ul>
+
           {/* Layout items */}
-          <div className="uk-container">
-            {this.props.users.map((user) => (
-              <div
+          <div
                 className="js-filter uk-grid uk-text-center uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m"
                 uk-scrollspy="cls: uk-animation-fade; target: .uk-card; delay: 100; repeat: false"
+          >
+        
+            {this.props.users.map((user) => (
+
+              <div tenant={user.tenantCode}
+                       className="uk-card uk-card-default uk-margin-bottom"
               >
-                <div>
-                  <div
-                    tenant={user.tenantCode}
-                    className="uk-card uk-card-default uk-margin-bottom"
-                  >
-                    <UserCard
-                      key={user.id}
-                      tenantCode={user.tenantCode}
-                      role={user.role}
-                      name={user.name}
-                      lastName={user.lastName}
-                      email={user.email}
-                      phone={user.phone}
-                    />
-                  </div>
+                <UserCard
+                    key={user.id}
+                    tenantCode={user.tenantCode}
+                    role={user.role}
+                    name={user.name}
+                    lastName={user.lastName}
+                    email={user.email}
+                    phone={user.phone}
+                />
+              
                 </div>
-              </div>
+              
             ))}
           </div>
         </div>
