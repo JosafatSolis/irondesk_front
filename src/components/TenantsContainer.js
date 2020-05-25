@@ -6,13 +6,17 @@ export default class TenantsContainer extends Component {
     render() {
         return(
             <section className="uk-section">
-                <div className="uk-container">
-                    <div className="uk-grid uk-child-width-1-3">
-                        <TenantCard code="BT" name="Bimbo Toluca" />
-                        <TenantCard code="TR" name="Tia Rosa" />
-                        <TenantCard code="SM" name="Suandy" />
-                    </div>
-                
+               <div className="uk-grid uk-text-center uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m">
+                {this.props.tenants.map( (tenant) => (
+
+                    <TenantCard
+                        code={tenant.code}
+                        name={tenant.name}
+                        tickets={tenant.tickets}
+                    />
+
+                    ))}         
+
                 </div>
             </section>
         )

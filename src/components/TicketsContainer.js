@@ -5,6 +5,7 @@ export default class TicketsContainer extends Component {
   render() {
     return (
       <section className="uk-section">
+
         <div uk-filter="target: .js-filter">
           {/* Filter Controls */}
           <ul className="uk-subnav uk-subnav-pill">
