@@ -8,9 +8,7 @@ export default class UsersContainer extends Component {
         <div uk-filter="target: .js-filter">
           {/* Filter Controls */}
           <ul className="uk-subnav uk-subnav-pill">
-            <li className="uk-active" uk-filter-control="">
-              <a href="#">Todos</a>
-            </li>
+            <li className="uk-active" uk-filter-control=""> <a href="#">Todos</a>   </li>
             {[...new Set(this.props.users.map(user => user.tenantCode))].map(tenant => (
                  <li uk-filter-control={"[tenant='" + tenant + "']"}>
                  <a href="#">{tenant}</a>
@@ -25,6 +23,7 @@ export default class UsersContainer extends Component {
           >
         
             {this.props.users.map((user) => (
+
 
               <div tenant={user.tenantCode}
                        className="uk-card uk-card-default uk-margin-bottom"
