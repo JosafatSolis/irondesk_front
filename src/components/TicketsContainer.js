@@ -1,7 +1,29 @@
 import React, { Component } from "react";
 import TicketCard from "./TicketCard";
+import { getTickets, getTicketsByTenantId } from "../services/ticketsService";
 
 export default class TicketsContainer extends Component {
+  
+  state={
+    tickets:[]
+  }
+
+  componentDidMount() {
+    // Revisa si es de 1 tenant en particular
+    const { tenantId } = this.props.match.params;
+    // Si es de un tenant, recupera sólo de ese tenant
+    if(tenantId) {
+      getTicketsByTenantId(tenantId).then(tickets => {
+        this.setState({ tickets });
+      })
+    } else {
+      // Si no tiene un tenant en particular, recupera de todos
+      getTickets().then(tickets => {
+        this.setState({ tickets });
+      })
+    }
+  }
+  
   render() {
     return (
       <section className="uk-section">
@@ -27,7 +49,7 @@ export default class TicketsContainer extends Component {
             className="js-filter uk-grid uk-text-center uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m"
             uk-scrollspy="cls: uk-animation-fade; target: .uk-card; delay: 100; repeat: false"
           >
-            {this.props.tickets.map((ticket) => (
+            {this.state.tickets.map((ticket) => (
               <div
                 status={ticket.status}
                 className="uk-card uk-card-default uk-margin-bottom"
