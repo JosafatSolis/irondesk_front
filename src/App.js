@@ -8,7 +8,9 @@ import TenantsContainer from "./components/TenantsContainer";
 import TicketsContainer from "./components/TicketsContainer";
 import UsersContainer from "./components/UsersContainer";
 import ModalButtonTicket from "./components/Modals_Forms/ModalButtonTicket"
-
+import FormikFormUser from "./components/Modals_Forms/FormikFormUser";
+import FormikFormTenant from "./components/Modals_Forms/FormikFormTenant";
+import FormikFormTicket from "./components/Modals_Forms/FormikFormTicket"
 
 
 class App extends Component{
@@ -22,9 +24,9 @@ class App extends Component{
                   {name:"Rod", code: "RO", tickets: "5"},
                 ]  } 
                 /> */}
-            
+            <FormikFormTicket />
 
-            <UsersContainer 
+            {/* <UsersContainer 
               users={ [
                 {
                 key:"1",
@@ -47,7 +49,7 @@ class App extends Component{
                 },
               ]}
             
-            /> 
+            />  */}
 
             
             

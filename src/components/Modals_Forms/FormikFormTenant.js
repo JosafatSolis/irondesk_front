@@ -8,7 +8,7 @@ import ErrorDialog from "../ErrorDialog"
 
 
 const validationSchema = Yup.object().shape(  {
-    name: Yup.string()
+    tenant: Yup.string()
                         
     .min(1, "Write your name")
     .max(15, "Your name is too long")
@@ -25,19 +25,19 @@ export default function FormikFormTenant (){
    
     return (
     <div 
-    className= "uk-position-center uk-vertical-align uk-text-center"
+    className= "uk-position-center uk-padding-small"
             style={  {
                 width: "800px",
                 border: "solid black",
                 backgroundColor:  "#ADD8E6",
                     }}  
-
     >
     <Formik
         //aqui estan los valores del formulario (Schemas)
-        initialValues= { {name: "", email: "", problem: "", code:"", phone:""  }}
+        initialValues= { {tenant: "", code:"" }}
         validationSchema={validationSchema}
-        onSubmit= { (values, {setSubmitting, resetForm} )=>{
+        onSubmit= { 
+        (values, {setSubmitting, resetForm} )=>{
            setSubmitting(true)
            // usamos setTime out como si fuera un post a servidor para corroborar que se envía
            setTimeout(  ()=>{
@@ -52,22 +52,21 @@ export default function FormikFormTenant (){
                 <form onSubmit={handleSubmit}>
                    
                 <div>
-                    <label htmlFor="name">    Name:       </label>
+                    <label htmlFor="tenant">    Tenant Name:       </label>
                     <input 
                     type="text"
-                    name="name"
-                    id="name"
+                    name="tenant"
+                    id="tenant"
                     placeholder=" Enter Tenants name"  
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.name}
-                    style= {{width:"40%"}}
-                    className={touched.name && errors.name ? "uk-form-danger uk-text-secondary" : "uk-form-success uk-text-secondary"} 
+                    className={touched.tenant && errors.tenant ? "uk-form-danger uk-text-secondary uk-text-center uk-input" : " uk-form-success uk-text-secondary uk-text-center uk-input"} 
                    />
 
                     <ErrorDialog
-                    touched={touched.name}
-                    message={errors.name}
+                    touched={touched.tenant}
+                    message={errors.tenant}
                     /> 
                 </div>
 
@@ -81,8 +80,7 @@ export default function FormikFormTenant (){
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.code}
-                    style= {{width:"40%"}}
-                    className={touched.code && errors.code ? "uk-form-danger uk-text-secondary" : "uk-form-success uk-text-secondary"}
+                    className={touched.code && errors.code ? "uk-form-danger uk-text-secondary uk-text-center uk-input" : "uk-form-success uk-text-secondary uk-text-center uk-input"}
                     />
 
                     <ErrorDialog

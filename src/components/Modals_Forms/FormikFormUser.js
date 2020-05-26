@@ -36,8 +36,6 @@ const validationSchema = Yup.object().shape(  {
 
 })
 
-
-
 ////////////FORMULARIO
 
 export default function FormikFormUser (){
@@ -49,10 +47,9 @@ export default function FormikFormUser (){
                 width: "800px",
                 border: "solid black",
                 backgroundColor:  "#ADD8E6",
-
                     }}  
-
     >
+        
     <Formik
         //aqui estan los valores del formulario (Schemas)
         initialValues= { {name: "", lastName: "", email: "", role: "", tenantCode:"", phone:"",    }}
@@ -72,7 +69,7 @@ export default function FormikFormUser (){
                 <form onSubmit={handleSubmit}>
                    
                 <div>
-                    <label htmlFor="name" style={{width: "300px", marginRight:"10px"}}>    Name:       </label>
+                    <label htmlFor="name" >    Name:       </label>
                     <input 
                     type="text"
                     name="name"
@@ -81,8 +78,7 @@ export default function FormikFormUser (){
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.name}
-                    style={{width: "54%"}}
-                    className={touched.name && errors.name ? "uk-form-danger uk-text-secondary uk-text-center" : "uk-form-success uk-text-secondary uk-text-center"} 
+                    className={touched.name && errors.name ? "uk-form-danger uk-text-secondary uk-text-center uk-input" : " uk-input uk-form-success uk-text-secondary uk-text-center"} 
                    />
 
                     <ErrorDialog
@@ -92,7 +88,7 @@ export default function FormikFormUser (){
                 </div>
 
                 <div>
-                    <label htmlFor="lastname" style={{maxWidth: "300px", marginRight:"5px"}}>    Last Name:       </label>
+                    <label htmlFor="lastname">    Last Name:       </label>
                     <input 
                     type="text"
                     name="lastName"
@@ -101,8 +97,7 @@ export default function FormikFormUser (){
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.lastName}
-                    style={{width: "50%"}}
-                    className={touched.name && errors.name ? "uk-form-danger uk-text-secondary uk-text-center" : "uk-form-success uk-text-secondary uk-text-center"} 
+                    className={touched.name && errors.name ? "uk-form-danger uk-text-secondary uk-text-center uk-input" : "uk-form-success uk-text-secondary uk-text-center uk-input"} 
                    />
 
                     <ErrorDialog
@@ -112,13 +107,7 @@ export default function FormikFormUser (){
                 </div>
 
                 <div>
-                    <label 
-                        htmlFor="email"
-                        style={{width: "300px" , marginRight:"10px"}}
-                        >
-                            Email:          
-                    </label>
-
+                    <label htmlFor="email">     Email:            </label>
                     <input 
                     type="email"
                     name="email"
@@ -127,8 +116,7 @@ export default function FormikFormUser (){
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.email}
-                    style= {{width:"56%"}}
-                    className={touched.email && errors.email ? "uk-form-danger uk-text-secondary uk-text-center" : "uk-text-center uk-form-success uk-text-secondary"}
+                    className={touched.email && errors.email ? "uk-form-danger uk-text-secondary uk-text-center uk-input" : "uk-input uk-text-center uk-form-success uk-text-secondary"}
                     />
 
                     <ErrorDialog
@@ -138,7 +126,7 @@ export default function FormikFormUser (){
                 </div>
 
                 <div>
-                    <label htmlFor="tenantCode" style={{width: "300px", marginRight:"10px"}}> Tenant Code:           </label>
+                    <label htmlFor="tenantCode" > Tenant Code:           </label>
                     <input 
                     type="text"
                     name="tenantCode"
@@ -147,8 +135,7 @@ export default function FormikFormUser (){
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.tenantCode}
-                    style= {{width:"48%"}}
-                    className={touched.tenantCode && errors.tenantCode ? "uk-text-center uk-form-danger uk-text-secondary uk-text-center" : "uk-text-center uk-form-success uk-text-secondary uk-text-center"}
+                    className={touched.tenantCode && errors.tenantCode ? "uk-input uk-text-center uk-form-danger uk-text-secondary uk-text-center" : "uk-input uk-text-center uk-form-success uk-text-secondary uk-text-center"}
                     />
 
                     <ErrorDialog
@@ -158,7 +145,7 @@ export default function FormikFormUser (){
                 </div>
 
                 <div>
-                <label htmlFor="role" style={{width: "300px", marginRight:"8px"}}> Role:           </label>
+                <label htmlFor="role"> Role:           </label>
                    
                     <select
                         name="role"
@@ -166,8 +153,7 @@ export default function FormikFormUser (){
                         value={values.role}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        style= {{width:"58.5%"}}
-                        className={touched.role && errors.role ? "uk-form-danger uk-text-secondary uk-text-center" : "uk-form-success uk-text-secondary uk-text-center"}
+                        className={touched.role && errors.role ? "uk-select uk-form-danger uk-text-secondary uk-text-center" : "uk-select uk-form-success uk-text-secondary uk-text-center"}
                     >
                         <option value=""            label="Select a role"  />
                         <option value="User"        label="User" />
@@ -181,10 +167,8 @@ export default function FormikFormUser (){
                     /> 
                 </div>
 
-
-
                 <div>
-                    <label htmlFor="phone" style={{width: "300px", marginRight:"10px"}}>Phone:          </label>
+                    <label htmlFor="phone" >Phone:          </label>
                     <input 
                     type="text"
                     name="phone"
@@ -193,8 +177,7 @@ export default function FormikFormUser (){
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.phone}
-                    style= {{width:"55%"}}
-                    className={touched.phone && errors.phone ? "uk-form-danger uk-text-secondary uk-text-center" : "uk-form-success uk-text-secondary uk-text-center"}
+                    className={touched.phone && errors.phone ? "uk-input uk-form-danger uk-text-secondary uk-text-center" : " uk-input uk-form-success uk-text-secondary uk-text-center"}
                     />
 
                     <ErrorDialog
