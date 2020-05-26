@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import UserCard from "./UserCard";
 import { getUsers } from "../services/userService";
+import ModalButtonUser from "./Modals_Forms/ModalButtonUser"
 
 export default class UsersContainer extends Component {
   state = {
@@ -15,6 +16,8 @@ export default class UsersContainer extends Component {
   render() {
     return (
       <section className="uk-section">
+       <div>  <ModalButtonUser/>        </div>
+
         <div uk-filter="target: .js-filter">
           {/* Filter Controls */}
           <ul className="uk-subnav uk-subnav-pill">

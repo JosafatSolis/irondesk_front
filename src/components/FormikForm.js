@@ -180,8 +180,10 @@ export default function FormikForm (){
 
                 <div className="uk-submit">
                     <button 
+                    
                     type="submit"
-                    disabled={isSubmitting} // no se pueda apretar mientras se sube
+                    disabled={isSubmitting} // no se pueda apretar mientras se sube}
+                    className="uk-button uk-button-primary"
                     >      SUBMIT          </button>
                 </div>
 
