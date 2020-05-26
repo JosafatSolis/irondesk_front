@@ -1,111 +1,74 @@
 import React, { Component } from "react";
 import TicketCard from "./TicketCard";
+import { getTickets, getTicketsByTenantId } from "../services/ticketsService";
 
 export default class TicketsContainer extends Component {
+  
+  state={
+    tickets:[]
+  }
+
+  componentDidMount() {
+    // Revisa si es de 1 tenant en particular
+    const { tenantId } = this.props.match.params;
+    // Si es de un tenant, recupera sólo de ese tenant
+    if(tenantId) {
+      getTicketsByTenantId(tenantId).then(tickets => {
+        this.setState({ tickets });
+      })
+    } else {
+      // Si no tiene un tenant en particular, recupera de todos
+      getTickets().then(tickets => {
+        this.setState({ tickets });
+      })
+    }
+  }
+  
   render() {
     return (
       <section className="uk-section">
 
         <div uk-filter="target: .js-filter">
+          {/* Filter Controls */}
           <ul className="uk-subnav uk-subnav-pill">
-            <li uk-filter-control="" className="uk-active">   <button className="uk-button uk-text-emphasis uk-text-primary"> <strong>TODOS</strong>   </button>  </li>
-            <li uk-filter-control="[status='Abierto']">       <button className="uk-button uk-text-emphasis uk-text-danger">  <strong>ABIERTOS</strong></button>  </li>
-            <li uk-filter-control="[status='Cerrado']">       <button className="uk-button uk-text-emphasis uk-text-success"> <strong>CERRADOS</strong></button>  </li>
+            <li className="uk-active" uk-filter-control="">
+              <a href="#">Todos</a>
+            </li>
+            <li uk-filter-control="[status='Open']">
+              <a href="#">Abiertos</a>
+            </li>
+            <li uk-filter-control="[status='ClosingRequested']">
+              <a href="#">Validar</a>
+            </li>
+            <li uk-filter-control="[status='Closed']">
+              <a href="#">Cerrados</a>
+            </li>
           </ul>
-
-          <div className="uk-container">
-
-            <div
-              className="js-filter uk-grid uk-text-center uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m"
-              uk-scrollspy="cls: uk-animation-fade; target: .uk-card; delay: 100; repeat: false" >
-{/*status = Abierto/Cerrado */}
-{/*state = Open/ClosingRequested/Cerrado */}
-{/*aqui va el arrat de ticket cards */}
-
-      
-                <div  status="Abierto"
-                      className="uk-card uk-card-default uk-margin-bottom">
-
-                    <TicketCard
-                      key="1"
-                      state="Open"
-                      tenantCode="HZ"
-                      assignated="Rául"
-                      user="Pedro Suárez"
-                      reportDate={new Date(2020, 4, 24, 10, 15)}
-                      description="Hubo un problema al iniciar el equipo porque no encendió correctamente a la hora que se ocupaba."
-                      activities={[
-                        {
-                          key: "1",
-                          date: new Date(),
-                          activity:
-                            "Se revisó el equipo para ver que estuviera conectado correctamente y encendiera, no encendió.",
-                        },
-                      ]}
-                    />
-                </div>
-
-                <div  status="Cerrado"
-                      className="uk-card uk-card-default uk-margin-bottom">
-
-                    <TicketCard
-                      key="2"
-                      state="Closed"
-                      tenantCode="KO"
-                      assignated="RO"
-                      user="Rod Amador"
-                      reportDate={new Date(2020, 4, 25, 10, 15)}
-                      description="Hubo un problema al iniciar el equipo porque no encendió correctamente a la hora que se ocupaba."
-                      activities={[
-                        {
-                          key: "2",
-                          date: new Date(),
-                          activity:
-                            "Se revisó el equipo para ver que estuviera conectado correctamente y encendiera, no encendió.",
-                        },
-                      ]}
-                    />
-                </div>
-
-
-                <div  status="Abierto"
-                      className="uk-card uk-card-default uk-margin-bottom">
-
-                    <TicketCard
-                      key="2"
-                      state="ClosingRequested"
-                      tenantCode="KO"
-                      assignated="RO"
-                      user="Rod Amador"
-                      reportDate={new Date(2020, 4, 25, 10, 15)}
-                      description="Hubo un problema al iniciar el equipo porque no encendió correctamente a la hora que se ocupaba."
-                      activities={[
-                        {
-                          key: "2",
-                          date: new Date(),
-                          activity:
-                            "Se revisó el equipo para ver que estuviera conectado correctamente y encendiera, no encendió.",
-                        },
-                      ]}
-                    />
-                </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-              
-            
-            </div>
+          {/* Layout items */}
+          <div
+            className="js-filter uk-grid uk-text-center uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m"
+            uk-scrollspy="cls: uk-animation-fade; target: .uk-card; delay: 100; repeat: false"
+          >
+            {this.state.tickets.map((ticket) => (
+              <div
+                status={ticket.status}
+                className="uk-card uk-card-default uk-margin-bottom"
+              >
+                <TicketCard
+                  key={ticket.id}
+                  status={ticket.status}
+                  tenantCode={ticket.tenantCode}
+                  tecnicianName={ticket.tecnicianName}
+                  user={ticket.clientUserFullName}
+                  reportDate={ticket.reportDate}
+                  description={ticket.issueDescription}
+                  activities={ticket.activities}
+                  internalNotes={ticket.internalNotes}
+                  closedDate={ticket.closedDate}
+                  clientComments={ticket.clientComments}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>

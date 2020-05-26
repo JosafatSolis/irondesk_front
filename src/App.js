@@ -1,32 +1,36 @@
 import React, { Component } from "react";
+import { Route } from "react-router-dom";
 import "./App.css";
 
+import AppContext from "./AppContext";
+import Home from "./components/Home";
 import Login from "./components/Login";
-import FormikForm from "./components/FormikForm";
-import NavBar from "./components/Navbar";
-import TenantsContainer from "./components/TenantsContainer";
-import TicketsContainer from "./components/TicketsContainer";
-import UsersContainer from "./components/UsersContainer";
 
-class App extends Component {
+export default class App extends Component {
+  state = {
+    currentUser: JSON.parse(localStorage.getItem("currentUser")) || {},
+  };
+
+  setUser = (user) => {
+    this.setState({ currentUser: user });
+  };
+
+  componentDidMount() {
+    const { history } = this.props;
+    const { id } = this.state.currentUser;
+    if(!id) history.push("/login");
+    history.push("/home");
+  }
+
   render() {
+    console.log(this.props);
+    const { state, setUser } = this;
     return (
-      <div className="App">
-        {/* <FormikForm /> */}
-        <NavBar />
-        {/* <TenantsContainer /> */}
-        {/* <TicketsContainer /> */}
-        <TenantsContainer tenants = {[
-          {code: "KO", name: "Rod", tickets: "5"},
-          {code: "HZ", name: "josaf", tickets: "3"}
-
-        ]}
-          
-        
-        />
-      </div>
+      // Manda los valores al AppContext para que estén disponibles en todos lados
+      <AppContext.Provider value={{ state, setUser }}>
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/*" component={Home} />
+      </AppContext.Provider>
     );
   }
 }
-
-export default App;

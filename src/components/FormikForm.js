@@ -76,6 +76,9 @@ export default function FormikForm (){
                     style= {{width:"40%"}}
                     className={touched.name && errors.name ? "uk-form-danger uk-text-secondary" : "uk-form-success uk-text-secondary"} 
                    />
+                    <span   uk-icon="user"
+                            className= "uk-margin-small-left"
+                    ></span>
 
                     <ErrorDialog
                     touched={touched.name}
@@ -84,18 +87,22 @@ export default function FormikForm (){
                 </div>
 
                 <div>
+                  
                     <label htmlFor="email">Email:          </label>
                     <input 
                     type="email"
                     name="email"
                     id="email"
-                    placeholder=" Enter your email"  
+                    placeholder=" Enter your email"   
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.email}
                     style= {{width:"40%"}}
                     className={touched.email && errors.email ? "uk-form-danger uk-text-secondary" : "uk-form-success uk-text-secondary"}
                     />
+                    <span   uk-icon="mail"
+                            className= "uk-margin-small-left"
+                    ></span>
 
                     <ErrorDialog
                     touched={touched.email}
@@ -104,7 +111,7 @@ export default function FormikForm (){
                 </div>
 
                 <div>
-                    <label htmlFor="code"> Code:           </label>
+                    <label htmlFor="code"> Code :           </label>
                     <input 
                     type="text"
                     name="code"
@@ -116,6 +123,9 @@ export default function FormikForm (){
                     style= {{width:"40%"}}
                     className={touched.code && errors.code ? "uk-form-danger uk-text-secondary" : "uk-form-success uk-text-secondary"}
                     />
+                    <span   uk-icon="info"
+                            className="uk-margin-small-left"
+                    ></span>
 
                     <ErrorDialog
                     touched={touched.code}
@@ -136,6 +146,9 @@ export default function FormikForm (){
                     style= {{width:"40%"}}
                     className={touched.phone && errors.phone ? "uk-form-danger uk-text-secondary" : "uk-form-success uk-text-secondary"}
                     />
+                    <span   uk-icon="phone"
+                            className= "uk-margin-small-left"
+                    ></span>
 
                     <ErrorDialog
                     touched={touched.phone}
@@ -167,8 +180,10 @@ export default function FormikForm (){
 
                 <div className="uk-submit">
                     <button 
+                    
                     type="submit"
-                    disabled={isSubmitting} // no se pueda apretar mientras se sube
+                    disabled={isSubmitting} // no se pueda apretar mientras se sube}
+                    className="uk-button uk-button-primary"
                     >      SUBMIT          </button>
                 </div>
 
