@@ -1,7 +1,7 @@
 import React from 'react';
 import {Formik} from "formik" // Es una libreria de React que facilita el manejo de formularios
 import * as Yup from "yup"    //libreria para validar el formulario 
-import ErrorDialog from "./ErrorDialog"
+import ErrorDialog from "../ErrorDialog"
 
 
 // VALIDACIONES --> las vamos a definir usando YUP como si fuera un SCHEMA de base de datos

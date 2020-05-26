@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ModalButton from './ModalButton';
 
 export default class TenantCard extends Component {
     render() {
@@ -10,8 +11,9 @@ export default class TenantCard extends Component {
                 </div>
 
                 <div className="uk-card-body">
-                    <div> Tickets Abiertos: </div>
+                    <div> Tickets Abiertos:                 </div>
                     <div> {this.props.tickets}               </div>
+                    
                 </div>
             </div>
         )
