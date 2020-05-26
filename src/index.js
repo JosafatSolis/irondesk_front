@@ -7,18 +7,25 @@ import * as serviceWorker from './serviceWorker';
 import UIkit from "uikit"
 import "uikit/dist/css/uikit.min.css"
 import Icons from "uikit/dist/js/uikit-icons"
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Route } from 'react-router-dom'
+import Login from './components/Login';
+import TicketsContainer from './components/TicketsContainer';
+import FormikForm from './components/FormikForm';
 
 UIkit.use(Icons)
 
 ReactDOM.render(
     <BrowserRouter>
-        <App />
+        <Route exact path="/"      component={App} />
+        <Route exact path="/login" component={Login} />
+       
+        <Route exact path="/tickets" component={TicketsContainer} />   
+        <Route exact path="/newticket" component={FormikForm} />
+
     </BrowserRouter>, 
     document.getElementById('root')
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+
+
 serviceWorker.unregister();
