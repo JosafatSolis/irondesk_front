@@ -26,6 +26,7 @@ export default class TicketCard extends Component {
         {/* Nombre y Apellido */}
         <div className="uk-text-large uk-text-bold uk-margin">
           <span uk-icon="user"></span>
+          
           {`${this.props.name.toUpperCase()} ${this.props.lastName.toUpperCase()}`}
         </div>
         {/* Labels Email .... X */}

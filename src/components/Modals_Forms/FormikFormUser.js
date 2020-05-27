@@ -41,14 +41,7 @@ const validationSchema = Yup.object().shape(  {
 export default function FormikFormUser (){
    
     return (
-    <div 
-    className= "uk-position-center uk-padding-small"
-            style={  {
-                width: "800px",
-                border: "solid black",
-                backgroundColor:  "#ADD8E6",
-                    }}  
-    >
+    <div>
         
     <Formik
         //aqui estan los valores del formulario (Schemas)
@@ -146,7 +139,7 @@ export default function FormikFormUser (){
 
                 <div>
                 <label htmlFor="role"> Role:           </label>
-                   
+                   {/*cambiar a radio */}
                     <select
                         name="role"
                         id="role"
@@ -191,7 +184,7 @@ export default function FormikFormUser (){
                     
                     type="submit"
                     disabled={isSubmitting} // no se pueda apretar mientras se sube}
-                    className="uk-button uk-button-primary"
+                    className="uk-button uk-button-primary uk-align-center"
                     >      SUBMIT          </button>
                 </div>
 

@@ -24,16 +24,10 @@ const validationSchema = Yup.object().shape(  {
 export default function FormikFormTenant (){
    
     return (
-    <div 
-    className= "uk-position-center uk-padding-small"
-            style={  {
-                width: "800px",
-                border: "solid black",
-                backgroundColor:  "#ADD8E6",
-                    }}  
-    >
-    <Formik
+    <div>
+     <Formik
         //aqui estan los valores del formulario (Schemas)
+        
         initialValues= { {tenant: "", code:"" }}
         validationSchema={validationSchema}
         onSubmit= { 
@@ -60,7 +54,7 @@ export default function FormikFormTenant (){
                     placeholder=" Enter Tenants name"  
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.name}
+                    value={values.tenant}
                     className={touched.tenant && errors.tenant ? "uk-form-danger uk-text-secondary uk-text-center uk-input" : " uk-form-success uk-text-secondary uk-text-center uk-input"} 
                    />
 
@@ -94,7 +88,7 @@ export default function FormikFormTenant (){
                     
                     type="submit"
                     disabled={isSubmitting} // no se pueda apretar mientras se sube}
-                    className="uk-button uk-button-primary"
+                    className="uk-button uk-button-primary uk-align-center"
                     >      SUBMIT          </button>
                 </div>
 

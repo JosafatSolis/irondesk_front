@@ -18,8 +18,7 @@ const validationSchema = Yup.object().shape(  {
     .min(2, "Please add a tenant code"),
     
     description: Yup.string()
-    .min(70, "Please describe with more detail...")
-    .max(1000, "Please use less than 1,000 characters")
+    .min(20, "Please describe with more detail...")
     .required("Please enter your problem"),
 })
 
@@ -28,15 +27,7 @@ const validationSchema = Yup.object().shape(  {
 export default function FormikFormTicket (){
    
     return (
-    <div 
-    className= "uk-position-center uk-padding-small"
-            style={  {
-                width: "800px",
-                border: "solid black",
-                backgroundColor:  "#ADD8E6",
-                    }}  
-
-    >
+    <div>
     <Formik
         //aqui estan los valores del formulario (Schemas)
         initialValues= { {user: "", tenantCode: "", description: ""  }}
@@ -99,20 +90,19 @@ export default function FormikFormTicket (){
                 <textarea 
                     rows="6" 
                     placeholder="Describe with detail the problem..."
-                    
                     type="text"
                     name="description"
                     id="description"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.description}
-                    className={touched.description && errors.descriptiom ? "uk-form-danger uk-text-secondary uk-text-center uk-input" : " uk-form-success uk-text-secondary uk-text-center uk-input"} 
+                    className={touched.description && errors.description ? "uk-form-danger uk-text-secondary uk-text-center uk-input" : " uk-form-success uk-text-secondary uk-text-center uk-input"} 
                     >
                 </textarea>
 
                     <ErrorDialog
-                    touched={touched.problem}
-                    message={errors.problem}
+                    touched={touched.description}
+                    message={errors.description}
                     /> 
                 </div>
 
@@ -121,7 +111,7 @@ export default function FormikFormTicket (){
                     
                     type="submit"
                     disabled={isSubmitting} // no se pueda apretar mientras se sube}
-                    className="uk-button uk-button-primary"
+                    className="uk-button uk-button-primary uk-align-center"
                     >      SUBMIT          </button>
                 </div>
 
