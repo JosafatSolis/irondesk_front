@@ -13,9 +13,9 @@ import Icons from "uikit/dist/js/uikit-icons"
 UIkit.use(Icons)
 
 ReactDOM.render(
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>, 
+    
+        <App />,
+    
     document.getElementById('root')
 );
 
