@@ -86,7 +86,7 @@ export default function FormikFormTenant (){
                     type="submit"
                     disabled={isSubmitting} // no se pueda apretar mientras se sube}
                     className="uk-button uk-button-primary uk-align-center"
-                    >      SUBMIT          </button>
+                    >      AGREGAR TENANT          </button>
                 </div>
 
 

@@ -28,7 +28,7 @@ function ModalButton() {
               onClick={() => {
                 setModalIsOpen(true);
               }}
-              className="uk-button uk-button-primary"
+              className="uk-button"
             >
               NUEVO TICKET [+]
             </button>
