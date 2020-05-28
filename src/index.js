@@ -15,7 +15,7 @@ UIkit.use(Icons)
 ReactDOM.render(
     <BrowserRouter>
         {/* <App /> */}
-        <Route path="/" component={App} />
+        <Route path="/" component={(props) => App(props)} />
     </BrowserRouter>, 
     document.getElementById('root')
 );

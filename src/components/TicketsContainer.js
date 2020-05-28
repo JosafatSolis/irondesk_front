@@ -10,14 +10,11 @@ export default class TicketsContainer extends Component {
   componentDidMount() {
     // Revisa si es de 1 tenant en particular
     const { tenantId } = this.props.match.params;
-    console.log("Params:", this.props.match.params);
-    console.log("Tenant: ", tenantId);
     // Si es de un tenant, recupera sólo de ese tenant
     if (tenantId) {
       getTicketsByTenantId(tenantId)
         .then((resp) => {
           const { data: tickets } = resp;
-          console.log("Tickets: ", tickets);
           this.setState({ tickets });
         })
         .catch((reason) => console.log("Error: ", reason));
@@ -57,7 +54,6 @@ export default class TicketsContainer extends Component {
           >
             {Array.isArray(this.state.tickets) && this.state.tickets.length
               ? this.state.tickets.map((ticket) => {
-                  console.log("map...");
                   return (
                     <div
                       status={ticket.status}
@@ -80,8 +76,7 @@ export default class TicketsContainer extends Component {
                   );
                 })
               : 
-              // null
-                console.log("VACIO")
+              null
                 }
           </div>
         </div>

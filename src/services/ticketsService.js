@@ -8,3 +8,7 @@ export const getTickets = () => {
 export const getTicketsByTenantId = (tenantId) => {
     return axios.get(`${base_url}/tickets/bytenant/${tenantId}`);
 }
+
+export const getOpenTicketsCountByTenantId = (tenantId) => {
+    return axios.get(`${base_url}/tickets/bytenant/${tenantId}/open`);
+}
