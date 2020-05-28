@@ -23,18 +23,19 @@ class Login extends Component {
     const { setUser } = this.context;
     const { credentials } = this.state;
     const { history } = this.props;
+    console.log(credentials);
     // Mandamos llamar el servicio que regresa una promesa, que a su vez regrea un objeto res.data con el user dentro
-    login({...credentials}).then(res => {
+    login(credentials).then(res => {
         // Extrae el usuario y lo asigna al context, mediante el método setUser
         const { user } = res.data;
         setUser(user);
         // Cambia la página dependiendo del rol del usuario logueado:
-        if(user.role === "Admin") {
-             history.push("/tenants")
+        if(["Admin", "Tecnician"].includes(user.role)) {
+             history.push("home/tenants")
         } else {
-            history.push(`/tickets/${user.tenant}`)
+            history.push(`home/tickets/${user.tenant}`)
         }
-    })
+    }).catch(reason => console.log("Error", reason))
   };
 
   render() {

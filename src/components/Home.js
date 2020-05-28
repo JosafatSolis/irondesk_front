@@ -26,6 +26,10 @@ render() {
           <Switch>
             <Route exact path="/home/tenants" component={() => <TenantsContainer tenants={[{tickets:"1", name:"Bimbo Toluca", code: "BT"}]} />} /> 
             <Route exact path="/home/users" component={(props) => <UsersContainer  {...props} users={users}/>} />
+            {/* 
+                // ¡¡Cuidado con hacer esto!! Porque hace que no lleguen los props al componente
+                <Route exact path="/home/tickets/:tenantId" component={() => TicketsContainer} />
+            */}
             <Route exact path="/home/tickets" component={TicketsContainer} />
             <Route exact path="/home/tickets/:tenantId" component={TicketsContainer} />
             <Route exact path="/home/tickets/new" component={FormikForm} />

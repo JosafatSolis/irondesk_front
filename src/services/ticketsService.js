@@ -6,5 +6,5 @@ export const getTickets = () => {
 }
 
 export const getTicketsByTenantId = (tenantId) => {
-    return axios.get(`${base_url}/tickets/${tenantId}`);
+    return axios.get(`${base_url}/tickets/bytenant/${tenantId}`);
 }
