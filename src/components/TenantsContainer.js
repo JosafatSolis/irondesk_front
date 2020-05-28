@@ -5,6 +5,7 @@ import ModalButtonTenant from './Modals_Forms/ModalButtonTenant';
 
 
 export default class TenantsContainer extends Component {
+
     render() {
         return(
             <section className="uk-section">
@@ -14,6 +15,7 @@ export default class TenantsContainer extends Component {
                 {this.props.tenants.map( (tenant) => (
 
                     <TenantCard
+                        key={tenant._id}
                         name={tenant.name}
                         code={tenant.code}
                         tickets={tenant.tickets}
