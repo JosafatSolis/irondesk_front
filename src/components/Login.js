@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import AppContext from "../AppContext";
 import { login } from '../services/loginService';
+
 let logo = require("../images/logo.png");
 let playa = require("../images/playa.jpg")
+
+
 
 class Login extends Component {
   // Así se enlaza el AppContext para que pueda ser utilizado dentro del componente y compartir y leer variables globales.
   static contextType = AppContext;
 
-    state={
-        credentials:{}
-    }
+    state={credentials:{} }
 
   handleChange = (e) => {
     let { credentials } = this.state;
@@ -41,7 +42,10 @@ class Login extends Component {
 
   render() {
     return (
+
+     
       <main>
+
         <section style={{backgroundImage:`url(${playa})`}}
           className="
           uk-background-blend-luminosity
@@ -54,36 +58,28 @@ class Login extends Component {
 
           uk-flex 
           uk-flex-center 
-          uk-flex-middle" 
-        >  
+          uk-flex-middle" >  
           
           <article
+          className="uk-background-muted "
           style={{
             border:"solid 2px #f07e1c",
             width: "1000px",
             padding: "10px"
-          }}
-          className="  uk-background-muted ">
+          }}>
 
           <div className="uk-flex uk-flex-center uk-flex-middle uk-margin-large-left">
-            <img
-              src={logo}
-              alt="company"
-              className="uk-margin"
-              styles={{}}
-            />
+            <img src={logo} alt="company" className="uk-margin"/>
   
             <form 
-            className="uk-width-1-2 uk-margin-large-top uk-margin-large-left"
-            onSubmit={(e) => this.handleSubmit(e)}>
-              
-              
+              className="uk-width-1-2 uk-margin-large-top uk-margin-large-left"
+              onSubmit={(e) => this.handleSubmit(e)}>
+                
                 {/* USERNAME: NOMBRE DE LA PERSONA */}
-               
                   <span
-                    uk-icon="icon: users; ratio: 2"
-                    className="uk-margin-small-right"
-                  ></span>
+                    uk-icon="icon: users; ratio: 2" className="uk-margin-small-right">
+                  </span>
+                  
                   <input
                     name="email"
                     onChange={(e) => this.handleChange(e)}
@@ -94,30 +90,23 @@ class Login extends Component {
                   ></input>
             
                 {/*PASSWORD A INTRODUCIR --> HACER EL POST */}
-
               <div>
-                <span
-                  uk-icon="icon: lock; ratio: 2"
-                  className="uk-margin-small-right"
-                ></span>
+                <span uk-icon="icon: lock; ratio: 2" className="uk-margin-small-right"> </span>
                 <input
                   name="password"
                   onChange={(e) => this.handleChange(e)}
                   className="uk-margin-small-top uk-width-1-2 uk-form-large uk-text-center"
                   type="text"
                   placeholder="Password"
-                  className="uk-width-1-2 uk-form-large uk-text-center uk-margin-small-top"
-                  style={{ border: "solid 2px #f07e1c" }}
-                ></input>
-              
+                  style={{ border: "solid 2px #f07e1c" }}>
+                </input>
               </div>
                 {/* BOTON DE LOGIN PARA ENVIAR SOLICITUD*/}
 
               <div className=" uk-align-center ">
                   <button
                     className=" uk-align-center uk-button uk-button-primary"
-                    style={{backgroundColor:"#f07e1c" }}
-                  >
+                    style={{backgroundColor:"#f07e1c" }}>
                     Login
                   </button>
               </div>
@@ -127,6 +116,7 @@ class Login extends Component {
             </div>
           </article>
         </section>
+     
       </main>
       
     );

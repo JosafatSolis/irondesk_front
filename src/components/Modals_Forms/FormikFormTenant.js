@@ -9,8 +9,8 @@ import ErrorDialog from "../ErrorDialog"
 
 
 const validationSchema = Yup.object().shape(  {
-    tenant: Yup.string()
-    .required("Select a tenant"),
+    name: Yup.string()
+    .required("Select a Tenant"),
 
     code: Yup.string()
     .required("You must enter a code")
@@ -26,7 +26,7 @@ export default function FormikFormTenant (){
      <Formik
         //aqui estan los valores del formulario (Schemas)
         
-        initialValues= { {tenant: "", code:"" }}
+        initialValues= { {name: "", code:"" }}
         validationSchema={validationSchema}
         onSubmit= { 
         (values, {setSubmitting, resetForm} )=>{
@@ -44,34 +44,23 @@ export default function FormikFormTenant (){
                 <form onSubmit={handleSubmit}>
 
                 <div>
-                <label htmlFor="tenant"> Tenant:           </label>
-                   {/*cambiar a radio */}
-                    <select
-                        name="tenant"
-                        id="tenant"
-                        value={values.tenant}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        className={touched.tenant && errors.tenant ? "uk-select uk-form-danger uk-text-secondary uk-text-center" : "uk-select uk-form-success uk-text-secondary uk-text-center"}
-                    >
-                        
-                    {/* {this.props.tenants.map( (tenant) => (
-                        aqui deberían reproducirse las opciones de acuerdo a la cantidad de tennats que hay
-                        <option>
-                            value={tenant.name}` label={tenant.name}
-                        </option> */}
-
-
-))}         
-                        
-                    </select>
+                    <label htmlFor="name"> Name:           </label>
+                    <input 
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder=" Enter your name"  
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.name}
+                    className={touched.name && errors.name ? "uk-form-danger uk-text-secondary uk-text-center uk-input" : "uk-form-success uk-text-secondary uk-text-center uk-input"}
+                    />
 
                     <ErrorDialog
-                    touched={touched.role}
-                    message={errors.role}
+                    touched={touched.name}
+                    message={errors.name}
                     /> 
                 </div>
-
                 <div>
                     <label htmlFor="code"> Code:           </label>
                     <input 

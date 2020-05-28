@@ -34,12 +34,11 @@ function ModalButton () {
             style={customStyles}>
 
           <div>
-            <a 
-              href="#"
+            <button 
               onClick= {()=>{setModalIsOpen(false)}  }
               className="uk-button uk-button-muted uk-align-right">
               <span uk-icon="icon: close"> </span>     
-            </a> 
+            </button> 
             <br/>
           </div>
             
