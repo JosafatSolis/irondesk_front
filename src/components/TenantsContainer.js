@@ -13,7 +13,6 @@ export default class TenantsContainer extends Component {
       .then((resp) => {
         const { data: tenants } = resp;
         this.setState({ tenants });
-        console.log("Tenants: ", tenants);
       })
       .catch((reason) => console.log("Error: ", reason));
   }

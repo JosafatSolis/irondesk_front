@@ -1,11 +1,16 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import AppContext from "../AppContext";
 import Timer from "./Timer";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
 
 export default class TicketCard extends Component {
+static contextType = AppContext;
+
   render() {
+    const { assignTecnician } = this.context;
     return (
       <div className="uk-card-body">
         {/* Encabezado con badges e íconos */}
@@ -53,7 +58,9 @@ export default class TicketCard extends Component {
               <span uk-icon="users"></span>
               <span className="uk-margin">Asignado a</span>
             </div>
-            <div className="uk-margin-small-left">{this.props.tecnicianName}</div>
+            <div className="uk-margin-small-left">
+              {this.props.tecnicianName}
+            </div>
             <hr />
           </div>
           {/* Descripción colapsable */}
@@ -124,14 +131,14 @@ export default class TicketCard extends Component {
           {/* Botones Cerrar / Validar */}
           <div className="uk-grid uk-flex-around">
             <div>
-              <a className="uk-button uk-button-default">Validar</a>
-            </div>
-            <div>
+              <Link onClick={() => assignTecnician(this.props.ticketId)} className="uk-button uk-button-default">
+                {this.props.tecnicianName ? "VALIDAR" : "ATENDER"}
+              </Link>
               <a className="uk-button uk-button-default">Cerrar</a>
             </div>
           </div>
         </div>
       </div>
-    )
+    );
   }
 }

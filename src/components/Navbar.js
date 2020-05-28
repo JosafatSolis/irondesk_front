@@ -15,7 +15,6 @@ export default class NavBar extends Component {
   updateState = () => {
     // Ajusta homePath
     const { currentUser } = this.context;
-    console.log("currentUser", currentUser);
     if (["Admin", "Tecnician"].includes(currentUser.role)) {
       this.setState({ homePath: "/home/tenants" });
     } else {
@@ -37,7 +36,6 @@ export default class NavBar extends Component {
   }
 
   render() {
-    console.log("location:", this.state.currentPos);
     const { removeUser } = this.context;
     return (
       <nav className="uk-navbar-container uk-navbar">
