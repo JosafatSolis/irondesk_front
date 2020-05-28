@@ -39,7 +39,7 @@ export default function FormikForm (){
     <div 
     className= "uk-position-center uk-vertical-align uk-text-center"
             style={  {
-                width: "800px",
+                
                 border: "solid black",
                 backgroundColor:  "#ADD8E6",
                     }}  

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Route, withRouter } from "react-router-dom";
+import AppContext from './AppContext';
 import "./App.css";
-
-import AppContext from "./AppContext";
-import Home from "./components/Home";
 import Login from "./components/Login";
+import Home from './components/Home';
+
 
 class App extends Component {
   state = {
