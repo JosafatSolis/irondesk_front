@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import dayjs from "dayjs";
 import relativeTime from 'dayjs/plugin/relativeTime';
-import { isInteger } from "formik";
+
 dayjs.extend(relativeTime);
 
 export default class Timer extends Component {

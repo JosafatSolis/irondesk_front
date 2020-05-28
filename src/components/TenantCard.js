@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ModalButton from './ModalButton';
+
 
 export default class TenantCard extends Component {
     render() {

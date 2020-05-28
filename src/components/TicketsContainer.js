@@ -3,9 +3,7 @@ import TicketCard from "./TicketCard";
 import { getTickets, getTicketsByTenantId } from "../services/ticketsService";
 
 export default class TicketsContainer extends Component {
-  state = {
-    tickets: [],
-  };
+  state = { tickets: [] };
 
   componentDidMount() {
     // Revisa si es de 1 tenant en particular
@@ -33,23 +31,40 @@ export default class TicketsContainer extends Component {
 
   render() {
     return (
+
       <section className="uk-section">
         <div uk-filter="target: .js-filter">
           {/* Filter Controls */}
           <ul className="uk-subnav uk-subnav-pill">
-            <li className="uk-active" uk-filter-control="">
-              <a href="#">Todos</a>
-            </li>
-            <li uk-filter-control="[status='Open']">
-              <a href="#">Abiertos</a>
-            </li>
-            <li uk-filter-control="[status='ClosingRequested']">
-              <a href="#">Validar</a>
-            </li>
-            <li uk-filter-control="[status='Closed']">
-              <a href="#">Cerrados</a>
-            </li>
+           
+              <li className="uk-active" uk-filter-control="">
+                    <button 
+                    className="uk-button uk-button-muted"
+                    style={{backgroundColor:"black", color:"white"}}
+                    >Todos</button>
+              </li>
+
+              <li uk-filter-control="[status='Open']">
+                    <button 
+                    style={{backgroundColor:"red", color:"white"}}
+                    className="uk-button uk-button-muted"
+                    >Abiertos</button>
+              </li>
+
+              <li uk-filter-control="[status='ClosingRequested']">
+                    <button 
+                    style={{backgroundColor:"orange", color:"white"}}
+                    className="uk-button uk-button-muted">Validar</button>
+              </li>
+
+              <li uk-filter-control="[status='Closed']">
+                    <button 
+                  style={{backgroundColor:"green", color:"white"}}
+                    className="uk-button uk-button-muted">Cerrados</button>
+              </li>
+
           </ul>
+
           {/* Layout items */}
           <div
             className="js-filter uk-grid uk-text-center uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m"
