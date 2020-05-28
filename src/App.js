@@ -41,10 +41,11 @@ class App extends Component {
   }
 
   render() {
+    const currentUser = this.state.currentUser;
     const { state, setUser, removeUser } = this;
     return (
       // Manda los valores al AppContext para que estén disponibles en todos lados
-      <AppContext.Provider value={{ state, setUser, removeUser }}>
+      <AppContext.Provider value={{ state, setUser, removeUser, currentUser }}>
         <Route exact path="/login" component={Login} />
         <Route exact path="/home/*" component={Home} />
       </AppContext.Provider>

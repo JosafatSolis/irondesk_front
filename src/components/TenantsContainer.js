@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import TenantCard from "./TenantCard";
-import ModalButtonTenant from "./Modals_Forms/ModalButtonTenant";
 import { getTenants } from "../services/tenantService";
-import { getOpenTicketsCountByTenantId, getTicketsByTenantId } from "../services/ticketsService";
 
 export default class TenantsContainer extends Component {
   state = {
@@ -23,11 +21,6 @@ export default class TenantsContainer extends Component {
   render() {
     return (
       <section className="uk-section">
-        <div>
-          {" "}
-          <ModalButtonTenant />{" "}
-        </div>
-
         <div className="uk-grid uk-text-center uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m">
           {this.state.tenants.map((tenant) => {
             //   console.log(tenant);

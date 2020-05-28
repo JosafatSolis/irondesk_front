@@ -25,7 +25,7 @@ function ModalButton () {
           onClick= { ()=>{setModalIsOpen(true)}  }
           className="uk-button uk-button-primary"
         > 
-            New "COMPONENT"
+            NUEVO TICKET [+]
         </button>
 
           <Modal 

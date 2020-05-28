@@ -19,7 +19,7 @@ export default class Timer extends Component {
     }
 
     componentWillUnmount() {
-        clearInterval(this.state.timerId);
+        //clearInterval(this.state.timerId);
     }
 
     render() {
