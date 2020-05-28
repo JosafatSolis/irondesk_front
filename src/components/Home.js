@@ -24,7 +24,7 @@ render() {
           <NavBar />
           {/* <UsersContainer users={users} /> */}
           <Switch>
-            <Route exact path="/home/tenants" component={() => <TenantsContainer tenants={[{tickets:"1", name:"Bimbo Toluca", code: "BT"}]} />} /> 
+            <Route exact path="/home/tenants" component={TenantsContainer} /> 
             <Route exact path="/home/users" component={(props) => <UsersContainer  {...props} users={users}/>} />
             {/* 
                 // ¡¡Cuidado con hacer esto!! Porque hace que no lleguen los props al componente

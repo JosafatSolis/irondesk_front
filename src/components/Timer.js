@@ -1,19 +1,25 @@
 import React, { Component } from "react";
 import dayjs from "dayjs";
 import relativeTime from 'dayjs/plugin/relativeTime';
-import { isInteger } from "formik";
 dayjs.extend(relativeTime);
 
 export default class Timer extends Component {
     state = {
-        tick: false
+        tick: false,
+        timerId: 0
     }
   
     constructor(params) {
         super(params);
-        setInterval(() => {
+        const timerId = setInterval(() => {
             this.setState({tick: !this.state.tick});
-        }, 1000)
+        }, 1000);
+        this.setState({timerId});
+        this.componentWillUnmount = this.componentWillUnmount.bind();
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.state.timerId);
     }
 
     render() {
