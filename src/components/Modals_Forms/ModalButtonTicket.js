@@ -19,13 +19,13 @@ function ModalButton () {
     const [modalIsOpen, setModalIsOpen] = useState(false)
   
     return (
-      <div className="uk-margin-top uk-text-center ">
+      <div className="uk-margin-top uk-text-center">
 
         <button
+          style={{backgroundColor:"#E5E4E2"}}
           onClick= { ()=>{setModalIsOpen(true)}  }
-          className="uk-button uk-button-primary"
-        > 
-            NUEVO TICKET [+]
+          className="uk-button"> 
+          NUEVO TICKET [+]
         </button>
 
           <Modal 
@@ -40,13 +40,12 @@ function ModalButton () {
               className="uk-button uk-button-muted uk-align-right">
               <span uk-icon="icon: close"> </span>     
             </a> 
+
             <br/>
           </div>
             
             <br/>
             <FormikFormTicket/>
-
-
           </Modal>
       </div>
     );

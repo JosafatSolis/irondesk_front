@@ -30,10 +30,10 @@ export default class TicketCard extends Component {
           <div>
             <ul className="uk-iconnav">
               <li>
-                <a href="#" uk-icon="icon: file-edit"></a>
+                <button href="#" uk-icon="icon: file-edit"></button>
               </li>
               <li>
-                <a href="#" uk-icon="icon: trash"></a>
+                <button href="#" uk-icon="icon: trash"></button>
               </li>
             </ul>
           </div>
