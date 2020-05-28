@@ -4,15 +4,13 @@ import * as Yup from "yup"    //libreria para validar el formulario
 import ErrorDialog from "../ErrorDialog"
 
 
+
 // VALIDACIONES --> las vamos a definir usando YUP como si fuera un SCHEMA de base de datos
 
 
 const validationSchema = Yup.object().shape(  {
     tenant: Yup.string()
-                        
-    .min(1, "Write your name")
-    .max(15, "Your name is too long")
-    .required("You must have a name"),
+    .required("Select a tenant"),
 
     code: Yup.string()
     .required("You must enter a code")
@@ -44,23 +42,33 @@ export default function FormikFormTenant (){
             {
              ({values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting}  )=>(
                 <form onSubmit={handleSubmit}>
-                   
+
                 <div>
-                    <label htmlFor="tenant">    Tenant Name:       </label>
-                    <input 
-                    type="text"
-                    name="tenant"
-                    id="tenant"
-                    placeholder=" Enter Tenants name"  
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.tenant}
-                    className={touched.tenant && errors.tenant ? "uk-form-danger uk-text-secondary uk-text-center uk-input" : " uk-form-success uk-text-secondary uk-text-center uk-input"} 
-                   />
+                <label htmlFor="tenant"> Tenant:           </label>
+                   {/*cambiar a radio */}
+                    <select
+                        name="tenant"
+                        id="tenant"
+                        value={values.tenant}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        className={touched.tenant && errors.tenant ? "uk-select uk-form-danger uk-text-secondary uk-text-center" : "uk-select uk-form-success uk-text-secondary uk-text-center"}
+                    >
+                        
+                    {/* {this.props.tenants.map( (tenant) => (
+                        aqui deberían reproducirse las opciones de acuerdo a la cantidad de tennats que hay
+                        <option>
+                            value={tenant.name}` label={tenant.name}
+                        </option> */}
+
+
+))}         
+                        
+                    </select>
 
                     <ErrorDialog
-                    touched={touched.tenant}
-                    message={errors.tenant}
+                    touched={touched.role}
+                    message={errors.role}
                     /> 
                 </div>
 

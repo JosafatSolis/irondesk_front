@@ -33,13 +33,19 @@ function ModalButton () {
             onRequestClose={()=>{setModalIsOpen(false)}}
             style={customStyles}>
        
-                  <FormikFormTicket/>
+          <div>
+            <a 
+              href="#"
+              onClick= {()=>{setModalIsOpen(false)}  }
+              className="uk-button uk-button-muted uk-align-right">
+              <span uk-icon="icon: close"> </span>     
+            </a> 
+            <br/>
+          </div>
+            
+            <br/>
+            <FormikFormTicket/>
 
-                  <button 
-                    onClick= {()=>{setModalIsOpen(false)}  }
-                    className="uk-button uk-button-primary uk-align-left">   
-                    CLOSE
-                  </button>
 
           </Modal>
       </div>

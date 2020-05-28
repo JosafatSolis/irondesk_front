@@ -8,14 +8,6 @@ import ErrorDialog from "../ErrorDialog"
 
 
 const validationSchema = Yup.object().shape(  {
-    user: Yup.string()         
-    .min(1, "Write your name")
-    .max(20, "Your name is too long")
-    .required("You must have a name"),
-
-    tenantCode: Yup.string()
-    .required("You must enter a code")
-    .min(2, "Please add a tenant code"),
     
     description: Yup.string()
     .min(20, "Please describe with more detail...")
@@ -30,7 +22,7 @@ export default function FormikFormTicket (){
     <div>
     <Formik
         //aqui estan los valores del formulario (Schemas)
-        initialValues= { {user: "", tenantCode: "", description: ""  }}
+        initialValues= { {description: ""  }}
         validationSchema={validationSchema}
         onSubmit= { (values, {setSubmitting, resetForm} )=>{
            setSubmitting(true)
@@ -45,45 +37,6 @@ export default function FormikFormTicket (){
             {
              ({values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting}  )=>(
                 <form onSubmit={handleSubmit}>
-                   
-                <div>
-                    <label htmlFor="user">    User:       </label>
-                    <input 
-                    type="text"
-                    name="user"
-                    id="user"
-                    placeholder=" Enter your User Name"  
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.user}
-                    className={touched.user && errors.user ? "uk-form-danger uk-text-secondary uk-text-center uk-input" : " uk-form-success uk-text-secondary uk-text-center uk-input"} 
-                   />
-
-                    <ErrorDialog
-                    touched={touched.user}
-                    message={errors.user}
-                    /> 
-                </div>
-
-
-                <div>
-                    <label htmlFor="tenantCode"> Tenant Code:           </label>
-                    <input 
-                    type="text"
-                    name="tenantCode"
-                    id="tenantCode"
-                    placeholder=" Enter your tenant code"  
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.tenantCode}
-                    className={touched.tenantCode && errors.tenantCode ? "uk-form-danger uk-text-secondary uk-text-center uk-input" : " uk-form-success uk-text-secondary uk-text-center uk-input"} 
-                    />
-
-                    <ErrorDialog
-                    touched={touched.tenantCode}
-                    message={errors.tenantCode}
-                    /> 
-                </div>
 
                 <div>
                 <label htmlFor="description"> Problem:           </label>
@@ -112,7 +65,7 @@ export default function FormikFormTicket (){
                     type="submit"
                     disabled={isSubmitting} // no se pueda apretar mientras se sube}
                     className="uk-button uk-button-primary uk-align-center"
-                    >      SUBMIT          </button>
+                    >      LEVANTAR TICKET          </button>
                 </div>
 
 

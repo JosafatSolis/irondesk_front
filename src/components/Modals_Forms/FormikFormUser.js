@@ -41,7 +41,7 @@ const validationSchema = Yup.object().shape(  {
 export default function FormikFormUser (){
    
     return (
-    <div>
+    <div className="uk-margin">
         
     <Formik
         //aqui estan los valores del formulario (Schemas)
