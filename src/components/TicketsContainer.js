@@ -71,9 +71,16 @@ export default class TicketsContainer extends Component {
           {/* Layout items */}
           <article
             className="js-filter 
-                       uk-grid
-                       uk-child-width-1-2@s 
-                       uk-child-width-1-3@m"
+            uk-margin-left
+            uk-margin-right
+           
+            uk-grid
+          
+            uk-flex-wrap-around
+            
+            uk-child-width-1-1 
+            uk-child-width-1-2@s 
+            uk-child-width-1-3@m"
             uk-scrollspy="cls: uk-animation-fade; target: .uk-card; delay: 100; repeat: false">
 
             {Array.isArray(this.state.tickets) && this.state.tickets.length
@@ -83,7 +90,10 @@ export default class TicketsContainer extends Component {
                     
                     <section
                       status={ticket.status}
-                      className="uk-card  uk-margin-left uk-margin-top uk-margin-right"
+                      className="
+                      uk-card  
+                      uk-margin-left 
+                      uk-margin-top uk-margin-right"
                     >
                       <TicketCard
                         key={ticket._id}

@@ -8,7 +8,7 @@ let playa = require("../images/playa.jpg")
 
 
 class Login extends Component {
-  // Así se enlaza el AppContext para que pueda ser utilizado dentro del componente y compartir y leer variables globales.
+  
   static contextType = AppContext;
 
     state={credentials:{} }

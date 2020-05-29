@@ -11,6 +11,7 @@ export default class TicketCard extends Component {
   render() {
     const { assignTecnician, addActivity } = this.context;
     return (
+      
       <div style={{ border: "solid 2px #f07e1c" }} className="uk-card-body ">
         {/* Encabezado con badges e íconos */}
 
