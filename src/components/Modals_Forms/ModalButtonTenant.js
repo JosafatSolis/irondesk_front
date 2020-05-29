@@ -19,40 +19,34 @@ function ModalButton() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
-    <div className=" uk-text-center">
-      <button
-        onClick={() => {
-          setModalIsOpen(true);
-        }}
-        className="uk-button uk-button-primary"
-      >
-        Nuevo Tenant [+]
-      </button>
+    <section className=" uk-text-center uk-margin-top">
+
+        <button 
+          style={{backgroundColor: "#E5E4E2", color:"black" }}
+          className="uk-button uk-button-primary"
+          onClick={() => {setModalIsOpen(true);}}>
+            NUEVO TENANT [+]
+        </button>
 
       <Modal
         isOpen={modalIsOpen}
-        onRequestClose={() => {
-          setModalIsOpen(false);
-        }}
-        style={customStyles}
-      >
+        onRequestClose={() => {setModalIsOpen(false);}}
+        style={customStyles}>
+
         <div>
-          <a
-            href="#"
-            onClick={() => {
-              setModalIsOpen(false);
-            }}
-            className="uk-button uk-button-muted uk-align-right"
-          >
-            <span uk-icon="icon: close"> </span>
-          </a>{" "}
-          <br />
+            <button
+              className="uk-button-muted uk-align-right"
+              onClick={() => {setModalIsOpen(false);}}>
+                <span   uk-icon="icon: close">    </span>
+            </button>   
+            <br/>   
         </div>
 
-        <br />
+        <br/>
         <FormikFormTenant />
+
       </Modal>
-    </div>
+    </section>
   );
 }
 

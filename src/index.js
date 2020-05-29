@@ -1,6 +1,7 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 
 import './index.css';
 import App from './App';
@@ -12,11 +13,14 @@ import "uikit/dist/css/uikit.min.css"
 import Icons from "uikit/dist/js/uikit-icons"
 UIkit.use(Icons)
 
-ReactDOM.render(
+const WithRouter = () => (
     <BrowserRouter>
-        {/* <App /> */}
-        <Route path="/" component={(props) => App(props)} />
-    </BrowserRouter>, 
+      <App />
+    </BrowserRouter>
+  );
+
+ReactDOM.render(
+    <WithRouter/>, 
     document.getElementById('root')
 );
 

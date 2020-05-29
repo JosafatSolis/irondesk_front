@@ -4,17 +4,22 @@ import { Link } from "react-router-dom";
 export default class TenantCard extends Component {
   render() {
     return (
-      <div href="" className="uk-card uk-card-default">
+      <article 
+        style={{ border: 'solid 2px #f07e1c' }}
+        className="uk-card uk-card-default uk-margin-right uk-margin-top ">
+          
         <Link to={`/home/tickets/${this.props.tenantId}`}>
-          <div className="uk-card-title">
-            {this.props.code} - {this.props.name}
-          </div>
+          
+          <h4 className="uk-card-title uk-margin-top">
+            <strong>{this.props.code}  </strong>
+              <br/> - <br/>
+            <strong>{this.props.name} </strong>
+          </h4>
 
-          <div className="uk-card-body">
-            <div> Ver Tickets </div>
-          </div>
+          <div className="uk-card-body"> Ver Tickets </div>
+
         </Link>
-      </div>
+      </article>
     );
   }
 }

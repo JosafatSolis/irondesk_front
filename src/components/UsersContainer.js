@@ -21,10 +21,10 @@ export default class UsersContainer extends Component {
         <div uk-filter="target: .js-filter">
           {/* Filter Controls */}
           <ul className="uk-subnav uk-subnav-pill">
-            <li className="uk-active" uk-filter-control=""> <a href="#">Todos</a>   </li>
+            <li className="uk-active" uk-filter-control=""> <button>Todos</button>   </li>
             {[...new Set(this.state.users.map(user => user.tenantCode))].map(tenant => (
                  <li uk-filter-control={"[tenant='" + tenant + "']"}>
-                 <a href="#">{tenant}</a>
+                 <button>{tenant}</button>
                </li>
             ))}
           </ul>
@@ -42,7 +42,7 @@ export default class UsersContainer extends Component {
                        className="uk-card uk-card-default uk-margin-bottom"
               >
                 <UserCard
-                    key={user.id}
+                    key={user._id}
                     tenantCode={user.tenantCode}
                     role={user.role}
                     name={user.name}
