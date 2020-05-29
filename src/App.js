@@ -1,10 +1,8 @@
 import Routes from "./Routes";
 import React, { Component } from "react";
-import { Route, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import AppContext from "./AppContext";
 import "./App.css";
-import Login from "./components/Login";
-import Home from "./components/Home";
 import { logout } from "./services/loginService";
 import { postNewTicket, patchTecnicianName } from "./services/ticketsService";
 
@@ -91,8 +89,6 @@ class App extends Component {
   }
 
 }
-
-
 
 const AppWithRouter = withRouter(App);
 

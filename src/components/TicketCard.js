@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import AppContext from "../AppContext";
 import Timer from "./Timer";
 import dayjs from "dayjs";
