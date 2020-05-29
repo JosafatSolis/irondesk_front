@@ -17,7 +17,8 @@ export default class NavBar extends Component {
     const { currentUser } = this.context;
     console.log("currentUser", currentUser);
 
-    if (["Admin", "Tecnician"].includes(currentUser.role)) { this.setState({ homePath: "/home/tenants" });} else { this.setState({ homePath: `/home/tickets/${currentUser.tenant._id}` });
+    if (["Admin", "Tecnician"].includes(currentUser.role)) { this.setState({ homePath: "/home/tenants" }); } else {
+      this.setState({ homePath: `/home/tickets/${currentUser.tenant._id}` });
     }
     // Ajusta currentPos
     const currentPath = window.location.pathname;
@@ -25,8 +26,8 @@ export default class NavBar extends Component {
       currentPath === this.state.homePath
         ? ""
         : currentPath.startsWith("/home/tenants")
-        ? ""
-        : "TICKETS";
+          ? ""
+          : "TICKETS";
     this.setState({ currentPos: lbl });
   };
 
@@ -38,9 +39,9 @@ export default class NavBar extends Component {
     console.log("location:", this.state.currentPos);
     const { removeUser } = this.context;
     return (
-      
-      <nav className="uk-navbar-container uk-navbar" 
-           style={{border: 'solid 1px #f07e1c', backgroundColor:"#E5E4E2"}}>
+
+      <nav className="uk-navbar-container uk-navbar"
+        style={{ border: 'solid 1px #f07e1c', backgroundColor: "#E5E4E2" }}>
         <div className="uk-navbar-left">
           <ul className="uk-navbar-nav" >
             <li className="uk-margin-right uk-margin-left">
@@ -78,7 +79,7 @@ export default class NavBar extends Component {
             </li>
 
             <li className="uk-button ">
-              <ModalButtonTicket  />
+              <ModalButtonTicket />
             </li>
 
           </ul>
@@ -88,7 +89,7 @@ export default class NavBar extends Component {
           <ul className="uk-navbar-nav">
             <li>
               <Link to="#" onClick={() => removeUser()}>
-              <strong>Logout</strong> 
+                <strong>Logout</strong>
               </Link>{" "}
               {/* Al hacer clic post para logout */}
             </li>

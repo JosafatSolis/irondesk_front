@@ -19,23 +19,23 @@ function ModalButton() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
-    <div 
- 
-    className="uk-margin-top uk-text-center">
+    <div
+
+      className="uk-margin-top uk-text-center">
       {/*BOTON QUE ABRE EL MODAL */}
 
       <button
-        onClick={() => {setModalIsOpen(true); }}
-        style={{backgroundColor:"#E5E4E2"}}
+        onClick={() => { setModalIsOpen(true); }}
+        style={{ backgroundColor: "#E5E4E2" }}
         className="uk-button ">
         Nuevo Tenant [+]
       </button>
 
       <Modal
         isOpen={modalIsOpen}
-        onRequestClose={() => {setModalIsOpen(false);}}
+        onRequestClose={() => { setModalIsOpen(false); }}
         style={customStyles}>
-          
+
         <div>
           <a
             href="#"
@@ -46,10 +46,10 @@ function ModalButton() {
             <span uk-icon="icon: close"> </span>
           </a>{" "}
 
-          <br/>
+          <br />
         </div>
 
-        <br/>
+        <br />
         <FormikFormTenant />
       </Modal>
     </div>
