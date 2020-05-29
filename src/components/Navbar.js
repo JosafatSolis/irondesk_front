@@ -49,7 +49,7 @@ export default class NavBar extends Component {
             <li uk-accordion="multiple: true" className="uk-align-center">
 
               <div className="uk-closed">
-                <Link to="#" className="uk-accordion-title uk-text-small">  {" "} TENANTS </Link>
+                <Link to="#" className="uk-accordion-title uk-text-small">  {" "} CLIENTES </Link>
 
                 <article className="uk-accordion-content">
                   <ul>    {" "} {/*Hay que poner un evento donde al hacer clic se agregue el nombre del tenant del lado derecho*/}

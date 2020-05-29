@@ -13,7 +13,7 @@ const validationSchema = Yup.object().shape({
 
   description: Yup.string()
     .min(50, "Por favor incluya más información...")
-    .required("Please enter your problem"),
+    .required("Cuéntanos qué problema tienes"),
 });
 
 ////////////FORMULARIO
@@ -53,7 +53,7 @@ export default function FormikFormActivity() {
                     <label htmlFor="description"> Problem: </label>
                     <textarea
                       rows="6"
-                      placeholder="Describe with detail the problem..."
+                      placeholder="Describe a detalle tu problema..."
                       type="text"
                       name="description"
                       id="description"

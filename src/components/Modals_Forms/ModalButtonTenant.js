@@ -28,7 +28,7 @@ function ModalButton() {
         style={{ backgroundColor: "#E5E4E2" }}
         className="uk-button "
         onClick={() => { setModalIsOpen(true); }}>
-        Nuevo Tenant [+]
+        Nuevo Cliente [+]
       </button>
       <Modal
         isOpen={modalIsOpen}
