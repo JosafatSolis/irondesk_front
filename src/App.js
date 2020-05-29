@@ -1,3 +1,4 @@
+import Routes from "./Routes";
 import React, { Component } from "react";
 import { Route, withRouter } from "react-router-dom";
 import AppContext from "./AppContext";
@@ -79,34 +80,19 @@ class App extends Component {
   }
 
   render() {
-    const currentUser = this.state.currentUser;
-    const {
-      state,
-      setUser,
-      removeUser,
-      createTicket,
-      assignTecnician,
-      addActivity,
-    } = this;
+    const { state, setUser, removeUser, createTicket, assignTecnician,addActivity } = this;
     return (
-      // Manda los valores al AppContext para que estén disponibles en todos lados
-      <AppContext.Provider
-        value={{
-          state,
-          setUser,
-          removeUser,
-          currentUser,
-          createTicket,
-          assignTecnician,
-          addActivity,
-        }}
-      >
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/home/*" component={Home} />
+      <AppContext.Provider value ={{...state,setUser,removeUser, createTicket,
+        assignTecnician,
+        addActivity,}} >
+        <Routes/>
       </AppContext.Provider>
     );
   }
+
 }
+
+
 
 const AppWithRouter = withRouter(App);
 

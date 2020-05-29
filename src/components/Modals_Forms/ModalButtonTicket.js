@@ -22,13 +22,13 @@ function ModalButton() {
     <AppContext.Consumer>
       {(value) => {
         return (
-          <div className="uk-margin-top uk-text-center ">
+          <section className="uk-margin-top uk-text-center ">
             <button
               style={{backgroundColor: "#E5E4E2"}}
+              className="uk-button"
               onClick={() => {
                 setModalIsOpen(true);
               }}
-              className="uk-button"
             >
               NUEVO TICKET [+]
             </button>
@@ -41,22 +41,22 @@ function ModalButton() {
               style={customStyles}
             >
               <div>
-                <a
+                <button
                   href="#"
                   onClick={() => {
                     setModalIsOpen(false);
                   }}
-                  className="uk-button uk-button-muted uk-align-right"
+                  className="uk-button-muted uk-align-right"
                 >
                   <span uk-icon="icon: close"> </span>
-                </a>
+                </button>
                 <br />
               </div>
 
               <br />
               <FormikFormTicket />
             </Modal>
-          </div>
+          </section>
         );
       }}
     </AppContext.Consumer>

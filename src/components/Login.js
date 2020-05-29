@@ -13,6 +13,18 @@ class Login extends Component {
 
     state={credentials:{} }
 
+    componentDidMount() {
+      const { history } = this.props;
+      const { _id, role, tenant } = this.context.currentUser;
+      if(_id) {
+      if(["Admin", "Tecnician"].includes(role)) {
+              history.push("/home/tenants");
+      } else {
+          history.push(`/home/tickets/${tenant._id}`)
+      }
+      }
+  }
+    
   handleChange = (e) => {
     let { credentials } = this.state;
     credentials = { ...credentials, [e.target.name]: e.target.value };
