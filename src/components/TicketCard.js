@@ -10,7 +10,7 @@ export default class TicketCard extends Component {
 static contextType = AppContext;
 
   render() {
-    const { assignTecnician } = this.context;
+    const { assignTecnician, addActivity } = this.context;
     return (
       <div className="uk-card-body">
         {/* Encabezado con badges e íconos */}

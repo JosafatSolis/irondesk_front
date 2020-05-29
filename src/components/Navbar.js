@@ -39,8 +39,7 @@ export default class NavBar extends Component {
     const { removeUser } = this.context;
     return (
 
-      <nav className="uk-navbar-container uk-navbar"
-        style={{ border: 'solid 1px #f07e1c', backgroundColor: "#E5E4E2" }}>
+      <nav className="uk-navbar-container uk-navbar" >
         <div className="uk-navbar-left">
           <ul className="uk-navbar-nav" >
             <li className="uk-margin-right uk-margin-left">
@@ -57,7 +56,7 @@ export default class NavBar extends Component {
                 <div className="uk-accordion-content">
                   <ul>    {" "} {/*Hay que poner un evento donde al hacer clic se agregue el nombre del tenant del lado derecho*/}
                     <li>  {" "} <Link to="/id:Bimbo" className="uk-link-muted"> Bimbo </Link>{" "}  </li>
-                    <li>  {" "}¿<Link to="/id:Coca" className="uk-link-muted">  Coca  </Link>{" "}  </li>
+                    <li>  {" "} <Link to="/id:Coca" className="uk-link-muted">  Coca  </Link>{" "}  </li>
                     <li>  {" "} <Link to="/id:Pepsi" className="uk-link-muted">Pepsi  </Link>{" "}  </li>
                   </ul>
                 </div>
@@ -86,6 +85,11 @@ export default class NavBar extends Component {
 
         <div className="uk-navbar-right">
           <ul className="uk-navbar-nav">
+              <li>
+              <Link to="#" onClick={() => this.updateState()}>
+                {`Bienvenido ${this.context.currentUser.name} (${this.context.currentUser.tenant.code})`}
+              </Link>{" "}
+              </li>
             <li>
               <Link to="#" onClick={() => removeUser()}>
                 <strong>Logout</strong>

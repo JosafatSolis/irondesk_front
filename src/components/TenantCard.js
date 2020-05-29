@@ -7,7 +7,7 @@ export default class TenantCard extends Component {
       <div>
         
       <div  className=" uk-card-default uk-margin-left" 
-            style={{border: 'solid 3px #f07e1c'}}>
+            style={{border: 'solid 1px #f07e1c'}}>
 
         <Link to={`/home/tickets/${this.props.tenantId}`}>
 

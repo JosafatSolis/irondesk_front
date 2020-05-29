@@ -17,7 +17,7 @@ export default class TenantsContainer extends Component {
 
   render() {
     return (
-      <section className="uk-section uk-background-primary">
+      <section className="uk-section">
         <div className="uk-grid uk-child-width-1-2@s uk-child-width-1-3@m">
           {this.state.tenants.map((tenant) => {
             //   console.log(tenant);
