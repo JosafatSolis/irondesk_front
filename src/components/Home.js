@@ -12,21 +12,19 @@ import AppContext from "../AppContext";
 export default class Home extends Component {
   static contextType = AppContext;
 
-    
-
-  componentDidMount() {
-    const { history } = this.props;
-    const { _id, role, tenant } = this.context.currentUser;
-    if (!_id) {
-      history.push("/login");
-    } else {
-      if (["Admin", "Tecnician"].includes(role)) {
-        history.push("/home/tenants");
-      } else {
-        history.push(`/home/tickets/${tenant._id}`);
-      }
-    }
-  }
+//   componentDidMount() {
+//     const { history } = this.props;
+//     const { _id, role, tenant } = this.context.currentUser;
+//     if (!_id) {
+//       history.push("/login");
+//     } else {
+//       if (["Admin", "Tecnician"].includes(role)) {
+//         history.push("/home/tenants");
+//       } else {
+//         history.push(`/home/tickets/${tenant._id}`);
+//       }
+//     }
+//   }
 
   render() {
     const users = [

@@ -78,6 +78,7 @@ export default class TicketsContainer extends Component {
 
             {Array.isArray(this.state.tickets) && this.state.tickets.length
               ? this.state.tickets.map((ticket) => {
+                  console.log(ticket);
                   return (
                     
                     <section
@@ -86,10 +87,11 @@ export default class TicketsContainer extends Component {
                     >
                       <TicketCard
                         key={ticket._id}
+                        ticketId = {ticket._id}
                         status={ticket.status}
                         tenantCode={ticket.tenantCode}
-                        tecnicianName={ticket.tecnicianName}
-                        user={ticket.clientUserFullName}
+                        tecnicianName={ticket.tecnicianUser ? ticket.tecnicianUser.name : ""}
+                        user={`${ticket.clientUser.name} ${ticket.clientUser.lastName} (${ticket.clientUser.email})`}
                         reportDate={ticket.reportDate}
                         description={ticket.issueDescription}
                         activities={ticket.activities}

@@ -7,30 +7,36 @@ import AppContext from "../../AppContext";
 // VALIDACIONES --> las vamos a definir usando YUP como si fuera un SCHEMA de base de datos
 
 const validationSchema = Yup.object().shape({
+  date: Yup.date()
+    .required("Tiene que incluir una fecha correcta")
+    .max(new Date() + 86400000),
+
   description: Yup.string()
-    .min(50, "Please describe with more detail...")
+    .min(50, "Por favor incluya más información...")
     .required("Please enter your problem"),
 });
 
 ////////////FORMULARIO
 
-export default function FormikFormTicket() {
+export default function FormikFormActivity() {
+  const pathSplit = window.location.pathname.split("/")
+  const ticketId = pathSplit[pathSplit.length - 1];
   return (
     <AppContext.Consumer>
       {(value) => {
-        const { createTicket } = value;
+        const { addActivity } = value;
         return (
           <div>
             <Formik
               //aqui estan los valores del formulario (Schemas)
-              initialValues={{ description: "" }}
+              initialValues={{ date: new Date(), description: "" }}
               validationSchema={validationSchema}
               onSubmit={(values, { setSubmitting, resetForm }) => {
                 setSubmitting(true);
-                const { description } = values;
+                const { date, description } = values;
                 setSubmitting(false);
                 resetForm();
-                createTicket(description);
+                addActivity(ticketId, {date, description});
               }}
             >
               {({

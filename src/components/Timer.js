@@ -8,18 +8,16 @@ export default class Timer extends Component {
         tick: false,
         timerId: 0
     }
-  
+
     constructor(params) {
         super(params);
-        const timerId = setInterval(() => {
+        this.timerId =  setInterval(() => {
             this.setState({tick: !this.state.tick});
         }, 1000);
-        this.setState({timerId});
-        this.componentWillUnmount = this.componentWillUnmount.bind();
     }
 
     componentWillUnmount() {
-        //clearInterval(this.state.timerId);
+        clearInterval(this.timerId);
     }
 
     render() {
