@@ -15,28 +15,29 @@ export default class TicketsContainer extends Component {
           const { data: tickets } = resp;
           this.setState({ tickets });
         })
-        .catch((reason) => console.log("Error: ", reason));
-    } else {
+        .catch((reason) => console.log("Error: ", reason));} 
+        
+    else {
       // Si no tiene un tenant en particular, recupera de todos
       getTickets()
-        .then((tickets) => {
-          this.setState({ tickets });
+        .then((tickets) => {this.setState({ tickets });
         })
         .catch((reason) => console.log("Error: ", reason));
-    }
-  }
+        }}
 
   render() {
     return (
+
       <section className="uk-section">
         <div uk-filter="target: .js-filter">
+
           {/* Filter Controls */}
-          <ul className="uk-subnav uk-subnav-pill">
+          <ul className="uk-margin-left uk-subnav uk-subnav-pill">
+            
             <li className="uk-active" uk-filter-control="">
               <button
                 className="uk-button uk-button-muted"
-                style={{ backgroundColor: "black", color: "white" }}
-              >
+                style={{ backgroundColor: "black", color: "white" }}>
                 Todos
               </button>
             </li>
@@ -44,8 +45,7 @@ export default class TicketsContainer extends Component {
             <li uk-filter-control="[status='Open']">
               <button
                 style={{ backgroundColor: "red", color: "white" }}
-                className="uk-button uk-button-muted"
-              >
+                className="uk-button uk-button-muted">
                 Abiertos
               </button>
             </li>
@@ -53,8 +53,7 @@ export default class TicketsContainer extends Component {
             <li uk-filter-control="[status='ClosingRequested']">
               <button
                 style={{ backgroundColor: "orange", color: "white" }}
-                className="uk-button uk-button-muted"
-              >
+                className="uk-button uk-button-muted">
                 Validar
               </button>
             </li>
@@ -62,27 +61,31 @@ export default class TicketsContainer extends Component {
             <li uk-filter-control="[status='Closed']">
               <button
                 style={{ backgroundColor: "green", color: "white" }}
-                className="uk-button uk-button-muted"
-              >
+                className="uk-button uk-button-muted">
                 Cerrados
               </button>
+
             </li>
           </ul>
 
           {/* Layout items */}
-          <div
-            className="js-filter uk-grid uk-text-center uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m"
-            uk-scrollspy="cls: uk-animation-fade; target: .uk-card; delay: 100; repeat: false"
-          >
+          <article
+            className="js-filter 
+                       uk-grid
+                       uk-child-width-1-2@s 
+                       uk-child-width-1-3@m"
+            uk-scrollspy="cls: uk-animation-fade; target: .uk-card; delay: 100; repeat: false">
+
             {Array.isArray(this.state.tickets) && this.state.tickets.length
               ? this.state.tickets.map((ticket) => {
                   return (
-                    <div
+                    
+                    <section
                       status={ticket.status}
-                      className="uk-card uk-card-default uk-margin-bottom"
+                      className="uk-card  uk-margin-left uk-margin-top uk-margin-right"
                     >
                       <TicketCard
-                        key={ticket.id}
+                        key={ticket._id}
                         status={ticket.status}
                         tenantCode={ticket.tenantCode}
                         tecnicianName={ticket.tecnicianName}
@@ -94,11 +97,11 @@ export default class TicketsContainer extends Component {
                         closedDate={ticket.closedDate}
                         clientComments={ticket.clientComments}
                       />
-                    </div>
+                    </section>
                   );
                 })
               : null}
-          </div>
+          </article>
         </div>
       </section>
     );

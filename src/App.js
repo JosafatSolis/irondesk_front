@@ -1,11 +1,10 @@
+import Routes from "./Routes";
+
 import React, { Component } from "react";
-import { Route, withRouter } from "react-router-dom";
 import AppContext from './AppContext';
 import "./App.css";
-import Login from "./components/Login";
-import Home from './components/Home';
 import { logout } from "./services/loginService";
-
+import { withRouter } from "react-router";
 
 class App extends Component {
   state = {
@@ -26,32 +25,22 @@ class App extends Component {
     history.push("/login");
   }
 
-  componentDidMount() {
-    const { history } = this.props;
-    const { _id, role, tenant } = this.state.currentUser;
-    if(!_id) {
-      history.push("/login")
-    } else {
-      if(["Admin", "Tecnician"].includes(role)) {
-            history.push("/home/tenants");
-      } else {
-        history.push(`/home/tickets/${tenant._id}`)
-      }
-    }
-  }
+
 
   render() {
-    const currentUser = this.state.currentUser;
     const { state, setUser, removeUser } = this;
     return (
-      // Manda los valores al AppContext para que estén disponibles en todos lados
-      <AppContext.Provider value={{ state, setUser, removeUser, currentUser }}>
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/home/*" component={Home} />
+      
+      <AppContext.Provider value ={{...state,setUser,removeUser}} >
+        <Routes/>
+
       </AppContext.Provider>
     );
   }
+
 }
+
+
 
 const AppWithRouter = withRouter(App);
 

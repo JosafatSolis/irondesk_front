@@ -19,12 +19,12 @@ function ModalButton () {
     const [modalIsOpen, setModalIsOpen] = useState(false)
   
     return (
-      <div className="uk-margin-top uk-text-center ">
+      <section className="uk-margin-top uk-text-center ">
 
-        <button
-          onClick= { ()=>{setModalIsOpen(true)}  }
+        <button 
+          style={{backgroundColor: "#E5E4E2", color:"black" }}
           className="uk-button uk-button-primary"
-        > 
+          onClick={() => {setModalIsOpen(true);}}>
             NUEVO TICKET [+]
         </button>
 
@@ -33,22 +33,20 @@ function ModalButton () {
             onRequestClose={()=>{setModalIsOpen(false)}}
             style={customStyles}>
        
-          <div>
-            <a 
-              href="#"
-              onClick= {()=>{setModalIsOpen(false)}  }
-              className="uk-button uk-button-muted uk-align-right">
-              <span uk-icon="icon: close"> </span>     
-            </a> 
-            <br/>
-          </div>
-            
+            <div>
+                  <button
+                    className="uk-button-muted uk-align-right"
+                    onClick={() => {setModalIsOpen(false);}}>
+                      <span   uk-icon="icon: close">    </span>
+                  </button>   
+                  <br/>   
+              </div>
+              
             <br/>
             <FormikFormTicket/>
 
-
           </Modal>
-      </div>
+      </section>
     );
   }
 
