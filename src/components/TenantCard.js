@@ -10,9 +10,7 @@ export default class TenantCard extends Component {
       >
         <Link to={`/home/tickets/${this.props.tenantId}`}>
           <h4 className="uk-card-title uk-margin-top">
-            <strong>{this.props.code} </strong>
-            <br /> - <br />
-            <strong>{this.props.name} </strong>
+            <strong>{this.props.code} - {this.props.name}</strong>
           </h4>
           <div className="uk-card-body"> Ver Tickets </div>
         </Link>

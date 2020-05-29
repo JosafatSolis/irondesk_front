@@ -90,19 +90,12 @@ export default class NavBar extends Component {
               </li>
             <li>
               <Link to="#" onClick={() => removeUser()}>
-                <strong>Logout</strong>
+                Logout
               </Link>{" "}
               {/* Al hacer clic post para logout */}
             </li>
           </ul>
         </section>
-
-        <section className="uk-navbar-right">
-            <ul className="uk-navbar-nav">
-              <li>  <Link to="#" onClick={() => removeUser()}> Logout</Link>   </li>
-            </ul>
-        </section>
-
       </nav>
     );
   }

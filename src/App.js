@@ -23,7 +23,7 @@ class App extends Component {
     this.setState({ currentUser: {} });
     logout();
     const { history } = this.props;
-    history.push("/login");
+    history.push("/");
   };
 
   createTicket = (issueDescription) => {
@@ -67,7 +67,7 @@ class App extends Component {
     const { history } = this.props;
     const { _id, role, tenant } = this.state.currentUser;
     if (!_id) {
-      history.push("/login");
+      history.push("/");
     } else {
       if (["Admin", "Tecnician"].includes(role)) {
         history.push("/home/tenants");
