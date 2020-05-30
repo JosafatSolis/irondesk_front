@@ -1,10 +1,15 @@
 import Routes from "./Routes";
-import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import AppContext from "./AppContext";
+import React, { Component } from "react";
+import AppContext from './AppContext';
 import "./App.css";
 import { logout } from "./services/loginService";
-import { postNewTicket, patchTecnicianName } from "./services/ticketsService";
+import {
+  postNewTicket,
+  patchTecnicianName,
+  postNewActivity,
+  patchTicketStatus,
+} from "./services/ticketsService";
 
 class App extends Component {
   state = {
@@ -26,12 +31,12 @@ class App extends Component {
     history.push("/");
   };
 
-  createTicket = (issueDescription) => {
+  createTicket = (issueDescription, tenantId) => {
     const { currentUser } = this.state;
     // Armar el objeto del ticket
     const ticket = {
       status: "Open",
-      tenant: currentUser.tenant._id,
+      tenant: tenantId,
       clientUser: currentUser._id,
       issueDescription: issueDescription,
       reportDate: new Date(),
@@ -55,12 +60,25 @@ class App extends Component {
       .catch((reason) => console.log("Error: ", reason));
   };
 
-  addActivity = (ticketId, newActivity) => {
-    console.log(
-      "TicketID, newAct, currentAct",
-      ticketId,
-      newActivity
-    );
+  addActivity = (ticketId, activity) => {
+    postNewActivity(ticketId, activity)
+      .then((resp) => {
+        console.log(resp);
+        const now = new Date();
+        this.setState({ lastUpdate: now });
+      })
+      .catch((reason) => console.log("Error: ", reason));
+  };
+
+  updateTicketStatus = (ticketId, status) => {
+    console.log("TicketID, newStatus", ticketId, status);
+    patchTicketStatus(ticketId, status)
+      .then((resp) => {
+        console.log(resp);
+        const now = new Date();
+        this.setState({ lastUpdate: now });
+      })
+      .catch((reason) => console.log("Error: ", reason));
   };
 
   componentDidMount() {
@@ -78,17 +96,34 @@ class App extends Component {
   }
 
   render() {
-    const { state, setUser, removeUser, createTicket, assignTecnician,addActivity } = this;
+    const {
+      state,
+      setUser,
+      removeUser,
+      createTicket,
+      assignTecnician,
+      addActivity,
+      updateTicketStatus,
+    } = this;
     return (
-      <AppContext.Provider value ={{...state,setUser,removeUser, createTicket,
-        assignTecnician,
-        addActivity,}} >
-        <Routes/>
+      <AppContext.Provider
+        value={{
+          ...state,
+          setUser,
+          removeUser,
+          createTicket,
+          assignTecnician,
+          addActivity,
+          updateTicketStatus,
+        }}
+      >
+        <Routes />
       </AppContext.Provider>
     );
   }
-
 }
+
+
 
 const AppWithRouter = withRouter(App);
 

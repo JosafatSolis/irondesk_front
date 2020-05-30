@@ -69,21 +69,27 @@ export default class TicketsContainer extends Component {
           </ul>
 
           {/* Layout items */}
-          <article
+          <section
             className="js-filter 
-                       uk-grid
-                       uk-child-width-1-2@s 
-                       uk-child-width-1-3@m"
+            uk-grid
+          
+            uk-flex-wrap-around
+            
+            uk-child-width-1-1 
+            uk-child-width-1-2@s 
+            uk-child-width-1-3@m"
             uk-scrollspy="cls: uk-animation-fade; target: .uk-card; delay: 100; repeat: false">
 
             {Array.isArray(this.state.tickets) && this.state.tickets.length
               ? this.state.tickets.map((ticket) => {
-                  console.log(ticket);
                   return (
                     
                     <section
+                      key={ticket._id}
                       status={ticket.status}
-                      className="uk-card  uk-margin-left uk-margin-top uk-margin-right"
+                      className="
+                      uk-card  
+                      "
                     >
                       <TicketCard
                         key={ticket._id}
@@ -103,7 +109,7 @@ export default class TicketsContainer extends Component {
                   );
                 })
               : null}
-          </article>
+          </section>
         </div>
       </section>
     );

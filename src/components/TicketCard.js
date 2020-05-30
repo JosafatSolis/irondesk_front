@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import AppContext from "../AppContext";
 import Timer from "./Timer";
+import ModalButtonActivity from "./Modals_Forms/ModalButtonActivity";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
@@ -8,10 +9,42 @@ dayjs.extend(relativeTime);
 export default class TicketCard extends Component {
   static contextType = AppContext;
 
-  render() {
-    const { assignTecnician, addActivity } = this.context;
+  assignVisible = () => {
     return (
-      <div style={{ border: "solid 2px #f07e1c" }} className="uk-card-body ">
+      this.props.status !== "Closed" &&
+      ["Admin", "Tecnician"].includes(this.context.currentUser.role) &&
+      !this.props.tecnicianName
+    );
+  };
+
+  validateVisible = () => {
+    return (
+      ["Admin", "Tecnician"].includes(this.context.currentUser.role) &&
+      this.props.tecnicianName &&
+      this.props.status === "Open"
+    );
+  };
+
+  closeVisible = () => {
+    return (
+      ["Admin", "User"].includes(this.context.currentUser.role) &&
+      this.props.status === "ClosingRequested"
+    );
+  };
+
+  render() {
+    const { assignTecnician, updateTicketStatus } = this.context;
+    const assignVisible = this.assignVisible();
+    const validateVisible = this.validateVisible();
+    const closeVisible = this.closeVisible();
+    return (
+      <section className="
+      uk-card 
+      uk-card-default 
+      uk-flex
+      uk-flex-around
+      uk-margin-top">
+      <div className="uk-card-body ">
         {/* Encabezado con badges e íconos */}
 
         <section className="uk-grid uk-flex-around ">
@@ -52,7 +85,9 @@ export default class TicketCard extends Component {
         </section>
 
         {/* Timer actualizado en tiempo real */}
-        <Timer reportDate={this.props.reportDate} />
+        {this.props.status === "Closed" ? null : (
+          <Timer reportDate={this.props.reportDate} />
+        )}
         {/* Labels Asignado a .... X */}
 
         <section
@@ -126,9 +161,7 @@ export default class TicketCard extends Component {
 
                       <tbody>
                         {this.props.activities.map((activity) => (
-                          <tr>
-                            {" "}
-                            {/* 15/05 18:14 */}
+                          <tr key={activity._id}>
                             <td>{dayjs(activity.date).format("D/MM H:mm")}</td>
                             <td>{activity.activity}</td>
                           </tr>
@@ -136,35 +169,63 @@ export default class TicketCard extends Component {
                       </tbody>
                     </table>
                   </article>
-
-                  <article>
-                    <ul className="uk-iconnav uk-align-right">
-                      <li className="uk-margin-small-top">
-                        {" "}
-                        <button uk-icon="icon: plus-circle"></button>{" "}
-                      </li>
-                    </ul>
-                  </article>
+                  {this.props.status === "Closed" ? null : (
+                    <article>
+                      <ul className="uk-iconnav uk-align-right">
+                        <li className="uk-margin-small-top">
+                          <ModalButtonActivity ticketId={this.props.ticketId} />
+                        </li>
+                      </ul>
+                    </article>
+                  )}
                 </div>
               </li>
             </ul>
           </section>
           {/* Botones Cerrar / Validar */}
           <div className="uk-grid uk-flex-around">
-            <div className="uk-align-center">
-              <button
-                onClick={() => assignTecnician(this.props.ticketId)}
-                className="uk-button uk-button-default"
-              >
-                {this.props.tecnicianName ? "VALIDAR" : "ATENDER"}
-              </button>{" "}
-            </div>
-            <div>
-              <button className="uk-button uk-button-default">Cerrar</button>
-            </div>
+            {!assignVisible ? null : (
+              <div className="uk-align-center">
+                <button
+                  className="uk-button uk-button-default"
+                  onClick={() => assignTecnician(this.props.ticketId)}
+                >
+                  ATENDER
+                </button>
+              </div>
+            )}
+            {!validateVisible ? null : (
+              <div>
+                <button
+                  className="uk-button uk-button-default"
+                  onClick={() =>
+                    updateTicketStatus(this.props.ticketId, {
+                      status: "ClosingRequested",
+                    })
+                  }
+                >
+                  Validar
+                </button>
+              </div>
+            )}
+            {!closeVisible ? null : (
+              <div>
+                <button
+                  className="uk-button uk-button-default"
+                  onClick={() =>
+                    updateTicketStatus(this.props.ticketId, {
+                      status: "Closed",
+                    })
+                  }
+                >
+                  Cerrar
+                </button>
+              </div>
+            )}
           </div>
         </section>
       </div>
+      </section>
     );
   }
 }

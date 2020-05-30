@@ -8,13 +8,13 @@ import AppContext from "../../AppContext";
 
 const validationSchema = Yup.object().shape({
   description: Yup.string()
-    .min(50, "Please describe with more detail...")
-    .required("Please enter your problem"),
+    .min(50, "Describe con mayor detalle...")
+    .required("Dinos cuál es el problema"),
 });
 
 ////////////FORMULARIO
 
-export default function FormikFormTicket() {
+export default function FormikFormTicket(props) {
   return (
     <AppContext.Consumer>
       {(value) => {
@@ -30,7 +30,7 @@ export default function FormikFormTicket() {
                 const { description } = values;
                 setSubmitting(false);
                 resetForm();
-                createTicket(description);
+                createTicket(description, props.tenantId);
               }}
             >
               {({
@@ -44,10 +44,10 @@ export default function FormikFormTicket() {
               }) => (
                 <form onSubmit={handleSubmit}>
                   <div>
-                    <label htmlFor="description"> Problem: </label>
+                    <label htmlFor="description"> Problema: </label>
                     <textarea
                       rows="6"
-                      placeholder="Describe with detail the problem..."
+                      placeholder="Describe a detalle el problema..."
                       type="text"
                       name="description"
                       id="description"

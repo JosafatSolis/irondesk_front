@@ -34,7 +34,8 @@ export default class NavBar extends Component {
   }
 
   render() {
-    const { removeUser } = this.context;
+    const { removeUser, currentUser } = this.context;
+    const lblRole = (currentUser.role === "User" ? "Usuario" : (currentUser.role === "Admin" ? "Administrador" : "Técnico" ));
     return (
 
       <nav className="uk-navbar-container uk-navbar" >
@@ -44,34 +45,6 @@ export default class NavBar extends Component {
               <Link onClick={() => this.updateState()} to={this.state.homePath}>
                 Home
               </Link>{" "}
-            </li>
-
-            <li uk-accordion="multiple: true" className="uk-align-center">
-
-              <div className="uk-closed">
-                <Link to="#" className="uk-accordion-title uk-text-small">  {" "} TENANTS </Link>
-
-                <article className="uk-accordion-content">
-                  <ul>    {" "} {/*Hay que poner un evento donde al hacer clic se agregue el nombre del tenant del lado derecho*/}
-                    <li>  {" "} <Link to="/id:Bimbo" className="uk-link-muted"> Bimbo </Link>{" "}  </li>
-                    <li>  {" "} <Link to="/id:Coca" className="uk-link-muted">  Coca  </Link>{" "}  </li>
-                    <li>  {" "} <Link to="/id:Pepsi" className="uk-link-muted">Pepsi  </Link>{" "}  </li>
-                  </ul>
-                </article>
-              </div>
-
-            </li>
-
-            {/* POS ACTUAL */}
-            <li className=" ">
-              <Link to="#" onClick={() => this.updateState()}>
-                {this.state.currentPos}
-              </Link>
-            </li>
-
-            {/* NUEVO TICKET */}
-            <li className="uk-button" >
-              <ModalButtonTenant className="uk-button-muted" />
             </li>
 
             <li className="uk-button ">
@@ -85,7 +58,7 @@ export default class NavBar extends Component {
           <ul className="uk-navbar-nav">
               <li>
               <Link to="#" onClick={() => this.updateState()}>
-                {`Bienvenido ${this.context.currentUser.name} (${this.context.currentUser.tenant.code})`}
+                {`Bienvenido ${this.context.currentUser.name} (${this.context.currentUser.tenant.code})`} <br/> {lblRole}
               </Link>{" "}
               </li>
             <li>

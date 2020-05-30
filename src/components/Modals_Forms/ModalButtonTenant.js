@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import FormikFormTenant from "./FormikFormTenant";
-import AppContext from "../../AppContext";
 
 const customStyles = {
   content: {
@@ -28,7 +27,7 @@ function ModalButton() {
         style={{ backgroundColor: "#E5E4E2" }}
         className="uk-button "
         onClick={() => { setModalIsOpen(true); }}>
-        Nuevo Tenant [+]
+        Nuevo Cliente [+]
       </button>
       <Modal
         isOpen={modalIsOpen}

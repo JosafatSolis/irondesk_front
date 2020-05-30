@@ -18,8 +18,18 @@ export default class TenantsContainer extends Component {
   render() {
     return (
 
-      <section className="uk-section">
-        <div className="uk-grid uk-margin-left uk-margin-right uk-text-center uk-child-width-1-2@s uk-child-width-1-3@m">
+        
+        <section className="
+          uk-margin-left
+          uk-margin-right
+         
+          uk-grid
+        
+          uk-flex-wrap-around
+          
+          uk-child-width-1-1 
+          uk-child-width-1-2@s 
+          uk-child-width-1-3@m">
           
           {this.state.tenants.map((tenant) => { return (
               <TenantCard
@@ -29,8 +39,8 @@ export default class TenantsContainer extends Component {
                 key={tenant._id}
               />  )
           } )}
-        </div>
-      </section>
+        </section>
+       
     );
   }
 }

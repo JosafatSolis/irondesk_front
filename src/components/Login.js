@@ -8,7 +8,7 @@ let playa = require("../images/playa.jpg")
 
 
 class Login extends Component {
-  // Así se enlaza el AppContext para que pueda ser utilizado dentro del componente y compartir y leer variables globales.
+  
   static contextType = AppContext;
 
     state={credentials:{} }
@@ -84,7 +84,7 @@ class Login extends Component {
             <img src={logo} alt="company" className="uk-margin"/>
   
             <form 
-              className="uk-width-1-2 uk-margin-large-top uk-margin-large-left"
+              className="uk-form uk-width-1-2 uk-margin-large-top uk-margin-large-left"
               onSubmit={(e) => this.handleSubmit(e)}>
                 
                 {/* USERNAME: NOMBRE DE LA PERSONA */}
@@ -102,16 +102,18 @@ class Login extends Component {
                   ></input>
             
                 {/*PASSWORD A INTRODUCIR --> HACER EL POST */}
-              <div>
+              <div className="uk-form-password">
                 <span uk-icon="icon: lock; ratio: 2" className="uk-margin-small-right"> </span>
                 <input
                   name="password"
                   onChange={(e) => this.handleChange(e)}
                   className="uk-margin-small-top uk-width-1-2 uk-form-large uk-text-center"
-                  type="text"
+                  type="password"
                   placeholder="Password"
                   style={{ border: "solid 2px #f07e1c" }}>
                 </input>
+                
+
               </div>
                 {/* BOTON DE LOGIN PARA ENVIAR SOLICITUD*/}
 

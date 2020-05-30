@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import FormikFormTicket from "./FormikFormTicket";
+import FormikFormActivity from "./FormikFormActivity";
 import AppContext from "../../AppContext";
 
 const customStyles = {
@@ -10,31 +10,25 @@ const customStyles = {
     right: "auto",
     bottom: "auto",
     width: "40%",
-    height: "50%",
+    height: "30%",
     transform: "translate(-40%, -20%)",
     border: "solid 1px #f07e1c",
   },
 };
 
-function ModalButton() {
+function ModalButton(props) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   return (
     <AppContext.Consumer>
       {(value) => {
-        const pathSplit = window.location.pathname.split("/");
-        let tenantId = pathSplit[pathSplit.length - 1];
-        tenantId = ["tenants", "tickets", "home"].includes(tenantId) ? null : tenantId;
-        return !tenantId ? null : (
+        return (
           <section className="uk-margin-top uk-text-center ">
             <button
-              style={{ backgroundColor: "#E5E4E2" }}
-              className="uk-button"
+              uk-icon="icon: plus-circle"
               onClick={() => {
                 setModalIsOpen(true);
               }}
-            >
-              NUEVO TICKET [+]
-            </button>
+            ></button>
 
             <Modal
               isOpen={modalIsOpen}
@@ -57,7 +51,7 @@ function ModalButton() {
               </div>
 
               <br />
-              <FormikFormTicket tenantId={tenantId} />
+              <FormikFormActivity ticketId={props.ticketId} />
             </Modal>
           </section>
         );
