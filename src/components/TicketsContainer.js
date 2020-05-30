@@ -69,11 +69,8 @@ export default class TicketsContainer extends Component {
           </ul>
 
           {/* Layout items */}
-          <article
+          <section
             className="js-filter 
-            uk-margin-left
-            uk-margin-right
-           
             uk-grid
           
             uk-flex-wrap-around
@@ -92,8 +89,7 @@ export default class TicketsContainer extends Component {
                       status={ticket.status}
                       className="
                       uk-card  
-                      uk-margin-left 
-                      uk-margin-top uk-margin-right"
+                      "
                     >
                       <TicketCard
                         key={ticket._id}
@@ -113,7 +109,7 @@ export default class TicketsContainer extends Component {
                   );
                 })
               : null}
-          </article>
+          </section>
         </div>
       </section>
     );

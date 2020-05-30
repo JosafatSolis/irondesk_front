@@ -5,8 +5,10 @@ export default class TenantCard extends Component {
   render() {
     return (
       <article
-        style={{ border: "solid 1px #f07e1c" }}
+       
         className="
+        uk-card 
+        uk-card-default
         uk-flex
         uk-flex-around
         uk-margin
