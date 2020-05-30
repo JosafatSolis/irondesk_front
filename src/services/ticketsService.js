@@ -20,3 +20,11 @@ export const postNewTicket = (ticket) => {
 export const patchTecnicianName = (ticket) => {
     return axios.patch(`${base_url}/tickets/${ticket._id}`, ticket)
 }
+
+export const postNewActivity = (ticketId, activity) => {
+    return axios.post(`${base_url}/tickets/${ticketId}/newactivity`, activity)
+}
+
+export const patchTicketStatus = (ticketId, status) => {
+    return axios.patch(`${base_url}/tickets/${ticketId}/statusupdate`, status)
+}

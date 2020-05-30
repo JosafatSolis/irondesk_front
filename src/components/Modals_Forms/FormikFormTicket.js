@@ -14,7 +14,7 @@ const validationSchema = Yup.object().shape({
 
 ////////////FORMULARIO
 
-export default function FormikFormTicket() {
+export default function FormikFormTicket(props) {
   return (
     <AppContext.Consumer>
       {(value) => {
@@ -30,7 +30,7 @@ export default function FormikFormTicket() {
                 const { description } = values;
                 setSubmitting(false);
                 resetForm();
-                createTicket(description);
+                createTicket(description, props.tenantId);
               }}
             >
               {({

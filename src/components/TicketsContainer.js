@@ -78,10 +78,10 @@ export default class TicketsContainer extends Component {
 
             {Array.isArray(this.state.tickets) && this.state.tickets.length
               ? this.state.tickets.map((ticket) => {
-                  console.log(ticket);
                   return (
                     
                     <section
+                      key={ticket._id}
                       status={ticket.status}
                       className="uk-card  uk-margin-left uk-margin-top uk-margin-right"
                     >

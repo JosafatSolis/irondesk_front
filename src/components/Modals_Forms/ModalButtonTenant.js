@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import FormikFormTenant from "./FormikFormTenant";
-import AppContext from "../../AppContext";
 
 const customStyles = {
   content: {

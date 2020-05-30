@@ -7,9 +7,6 @@ import AppContext from "../../AppContext";
 // VALIDACIONES --> las vamos a definir usando YUP como si fuera un SCHEMA de base de datos
 
 const validationSchema = Yup.object().shape({
-  date: Yup.date()
-    .required("Tiene que incluir una fecha correcta")
-    .max(new Date() + 86400000),
 
   description: Yup.string()
     .min(50, "Por favor incluya más información...")
@@ -18,9 +15,7 @@ const validationSchema = Yup.object().shape({
 
 ////////////FORMULARIO
 
-export default function FormikFormActivity() {
-  const pathSplit = window.location.pathname.split("/")
-  const ticketId = pathSplit[pathSplit.length - 1];
+export default function FormikFormActivity(props) {
   return (
     <AppContext.Consumer>
       {(value) => {
@@ -33,10 +28,10 @@ export default function FormikFormActivity() {
               validationSchema={validationSchema}
               onSubmit={(values, { setSubmitting, resetForm }) => {
                 setSubmitting(true);
-                const { date, description } = values;
+                const { date, description: activity } = values;
                 setSubmitting(false);
                 resetForm();
-                addActivity(ticketId, {date, description});
+                addActivity(props.ticketId, {date, activity});
               }}
             >
               {({
@@ -48,12 +43,12 @@ export default function FormikFormActivity() {
                 handleSubmit,
                 isSubmitting,
               }) => (
-                <form onSubmit={handleSubmit}>
+                <form className="uk-form" onSubmit={handleSubmit}>
                   <div>
-                    <label htmlFor="description"> Problem: </label>
+                    <label htmlFor="description"> Descripción: </label>
                     <textarea
                       rows="6"
-                      placeholder="Describe with detail the problem..."
+                      placeholder="Describe la(s) tarea(s) realizada(s)..."
                       type="text"
                       name="description"
                       id="description"
@@ -80,7 +75,7 @@ export default function FormikFormActivity() {
                       className="uk-button uk-button-primary uk-align-center"
                     >
                       {" "}
-                      LEVANTAR TICKET{" "}
+                      AGREGAR ACTIVIDAD{" "}
                     </button>
                   </div>
                 </form>
