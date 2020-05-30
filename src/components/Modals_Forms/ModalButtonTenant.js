@@ -32,7 +32,9 @@ function ModalButton() {
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={() => { setModalIsOpen(false); }}
-        style={customStyles}>
+        style={customStyles}
+        ariaHideApp={false}
+        >
 
         <div>
           <button

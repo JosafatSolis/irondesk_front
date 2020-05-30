@@ -30,6 +30,7 @@ export default function FormikFormTicket(props) {
                 const { description } = values;
                 setSubmitting(false);
                 resetForm();
+                props.setModalIsOpen(false);
                 createTicket(description, props.tenantId);
               }}
             >

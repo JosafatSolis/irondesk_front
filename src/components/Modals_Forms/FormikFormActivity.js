@@ -31,6 +31,7 @@ export default function FormikFormActivity(props) {
                 const { date, description: activity } = values;
                 setSubmitting(false);
                 resetForm();
+                props.setModalIsOpen(false);
                 addActivity(props.ticketId, {date, activity});
               }}
             >

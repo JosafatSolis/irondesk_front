@@ -42,6 +42,7 @@ function ModalButton() {
                 setModalIsOpen(false);
               }}
               style={customStyles}
+              ariaHideApp={false}
             >
               <div>
                 <button
@@ -57,7 +58,7 @@ function ModalButton() {
               </div>
 
               <br />
-              <FormikFormTicket tenantId={tenantId} />
+              <FormikFormTicket tenantId={tenantId} setModalIsOpen={setModalIsOpen} />
             </Modal>
           </section>
         );

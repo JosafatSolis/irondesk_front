@@ -5,7 +5,6 @@ axios.defaults.withCredentials = true;
 // Regresan promesas, se debe enviar el objeto COMPLETO, no con destructuring
 
 export const login = (data) => {
-    console.log("baseUrl:", base_url);
     return axios.post(`${base_url}/login`, data);
 }
 

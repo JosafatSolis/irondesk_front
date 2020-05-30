@@ -36,6 +36,7 @@ function ModalButton(props) {
                 setModalIsOpen(false);
               }}
               style={customStyles}
+              ariaHideApp={false}
             >
               <div>
                 <button
@@ -51,7 +52,7 @@ function ModalButton(props) {
               </div>
 
               <br />
-              <FormikFormActivity ticketId={props.ticketId} />
+              <FormikFormActivity ticketId={props.ticketId} setModalIsOpen={setModalIsOpen} />
             </Modal>
           </section>
         );

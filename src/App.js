@@ -1,7 +1,7 @@
 import Routes from "./Routes";
 import { withRouter } from "react-router-dom";
 import React, { Component } from "react";
-import AppContext from './AppContext';
+import AppContext from "./AppContext";
 import "./App.css";
 import { logout } from "./services/loginService";
 import {
@@ -18,7 +18,6 @@ class App extends Component {
   };
 
   setUser = (user) => {
-    console.log("SetUser", user);
     localStorage.setItem("currentUser", JSON.stringify(user));
     this.setState({ currentUser: user });
   };
@@ -33,6 +32,7 @@ class App extends Component {
 
   createTicket = (issueDescription, tenantId) => {
     const { currentUser } = this.state;
+    const { history } = this.props;
     // Armar el objeto del ticket
     const ticket = {
       status: "Open",
@@ -43,12 +43,16 @@ class App extends Component {
     };
     // Crearlo con el service
     postNewTicket(ticket)
-      .then((resp) => this.setState({ lastUpdate: Date() }))
+      .then((resp) => {
+        this.setState({ lastUpdate: Date() });
+        history.push("/");
+      })
       .catch((reason) => console.log("Error: ", reason));
   };
 
   assignTecnician = (ticketId) => {
     const { currentUser } = this.state;
+    const { history } = this.props;
     // Armar el objeto del ticket
     const ticket = {
       _id: ticketId,
@@ -56,27 +60,24 @@ class App extends Component {
     };
     // Crearlo con el service
     patchTecnicianName(ticket)
-      .then((resp) => console.log(resp))
+      .then((resp) => history.push("/"))
       .catch((reason) => console.log("Error: ", reason));
   };
 
   addActivity = (ticketId, activity) => {
+    const { history } = this.props;
     postNewActivity(ticketId, activity)
       .then((resp) => {
-        console.log(resp);
-        const now = new Date();
-        this.setState({ lastUpdate: now });
+        history.push("/");;
       })
       .catch((reason) => console.log("Error: ", reason));
   };
 
   updateTicketStatus = (ticketId, status) => {
-    console.log("TicketID, newStatus", ticketId, status);
+    const { history } = this.props;
     patchTicketStatus(ticketId, status)
       .then((resp) => {
-        console.log(resp);
-        const now = new Date();
-        this.setState({ lastUpdate: now });
+        history.push("/");
       })
       .catch((reason) => console.log("Error: ", reason));
   };
@@ -122,8 +123,6 @@ class App extends Component {
     );
   }
 }
-
-
 
 const AppWithRouter = withRouter(App);
 
