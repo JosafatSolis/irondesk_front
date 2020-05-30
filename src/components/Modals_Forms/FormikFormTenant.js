@@ -10,11 +10,11 @@ import ErrorDialog from "../ErrorDialog"
 
 const validationSchema = Yup.object().shape(  {
     name: Yup.string()
-    .required("Select a Tenant"),
+    .required("¿Qué cliente eres?"),
 
     code: Yup.string()
-    .required("You must enter a code")
-    .min(2, "At least use two characters"),
+    .required("Debes incluir un código")
+    .min(2, "Por lo menos dos caracteres"),
 })
 
 ////////////FORMULARIO
@@ -44,12 +44,12 @@ export default function FormikFormTenant (){
                 <form onSubmit={handleSubmit}>
 
                 <div>
-                    <label htmlFor="name"> Name:           </label>
+                    <label htmlFor="name"> Nombre:           </label>
                     <input 
                     type="text"
                     name="name"
                     id="name"
-                    placeholder=" Enter your name"  
+                    placeholder="Escribe tu nombre"  
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.name}
@@ -62,12 +62,12 @@ export default function FormikFormTenant (){
                     /> 
                 </div>
                 <div>
-                    <label htmlFor="code"> Code:           </label>
+                    <label htmlFor="code"> Código:           </label>
                     <input 
                     type="text"
                     name="code"
                     id="code"
-                    placeholder=" Enter your code"  
+                    placeholder="Introduce tu código"  
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.code}
@@ -86,7 +86,7 @@ export default function FormikFormTenant (){
                     type="submit"
                     disabled={isSubmitting} // no se pueda apretar mientras se sube}
                     className="uk-button uk-button-primary uk-align-center"
-                    >      AGREGAR TENANT          </button>
+                    >      AGREGAR CLIENTE          </button>
                 </div>
 
 

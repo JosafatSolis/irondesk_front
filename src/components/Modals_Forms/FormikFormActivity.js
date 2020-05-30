@@ -10,7 +10,7 @@ const validationSchema = Yup.object().shape({
 
   description: Yup.string()
     .min(50, "Por favor incluya más información...")
-    .required("Please enter your problem"),
+    .required("Cuéntanos qué problema tienes"),
 });
 
 ////////////FORMULARIO

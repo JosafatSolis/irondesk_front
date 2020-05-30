@@ -38,7 +38,13 @@ export default class TicketCard extends Component {
     const validateVisible = this.validateVisible();
     const closeVisible = this.closeVisible();
     return (
-      <div style={{ border: "solid 2px #f07e1c" }} className="uk-card-body ">
+      <section className="
+      uk-card 
+      uk-card-default 
+      uk-flex
+      uk-flex-around
+      uk-margin-top">
+      <div className="uk-card-body ">
         {/* Encabezado con badges e íconos */}
 
         <section className="uk-grid uk-flex-around ">
@@ -219,6 +225,7 @@ export default class TicketCard extends Component {
           </div>
         </section>
       </div>
+      </section>
     );
   }
 }

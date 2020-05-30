@@ -57,10 +57,10 @@ export default class Home extends Component {
       },
     ];
     return (
-      // Manda los valores al AppContext para que estén disponibles en todos lados
+     
       <div className="App">
         <NavBar />
-        {/* <UsersContainer users={users} /> */}
+     
         <Switch>
           <Route exact path="/home/tenants" component={TenantsContainer} />
           <Route
@@ -68,10 +68,7 @@ export default class Home extends Component {
             path="/home/users"
             component={(props) => <UsersContainer {...props} users={users} />}
           />
-          {/* 
-                // ¡¡Cuidado con hacer esto!! Porque hace que no lleguen los props al componente
-                <Route exact path="/home/tickets/:tenantId" component={() => TicketsContainer} />
-            */}
+         
           <Route exact path="/home/tickets" component={TicketsContainer} />
           <Route
             exact
