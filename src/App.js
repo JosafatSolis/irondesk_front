@@ -1,5 +1,5 @@
 import Routes from "./Routes";
-
+import { withRouter } from "react-router-dom";
 import React, { Component } from "react";
 import AppContext from './AppContext';
 import "./App.css";
@@ -14,6 +14,7 @@ import {
 class App extends Component {
   state = {
     currentUser: JSON.parse(localStorage.getItem("currentUser")) || {},
+    lastUpdate: {},
   };
 
   setUser = (user) => {
@@ -46,6 +47,18 @@ class App extends Component {
       .catch((reason) => console.log("Error: ", reason));
   };
 
+  assignTecnician = (ticketId) => {
+    const { currentUser } = this.state;
+    // Armar el objeto del ticket
+    const ticket = {
+      _id: ticketId,
+      tecnicianUser: currentUser._id,
+    };
+    // Crearlo con el service
+    patchTecnicianName(ticket)
+      .then((resp) => console.log(resp))
+      .catch((reason) => console.log("Error: ", reason));
+  };
 
   addActivity = (ticketId, activity) => {
     postNewActivity(ticketId, activity)
